@@ -1,1 +1,916 @@
-<p>Hello 大家好</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name - Personal Homepage</title>
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        a {
+            color: #2a6496;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #1a3d5c;
+            text-decoration: underline;
+        }
+
+        /* ===== NAVIGATION ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, #1a3d5c, #2a6496);
+            padding: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        nav ul li a {
+            display: block;
+            color: #fff;
+            padding: 16px 22px;
+            font-size: 0.92rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: background 0.3s, color 0.3s;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background: rgba(255,255,255,0.15);
+            text-decoration: none;
+        }
+
+        /* ===== HERO / HEADER ===== */
+        .hero {
+            margin-top: 56px;
+            background: linear-gradient(135deg, #1a3d5c, #2a6496, #3a8fd4);
+            color: #fff;
+            padding: 70px 20px 60px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid rgba(255,255,255,0.8);
+            margin-bottom: 20px;
+            object-fit: cover;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.15rem;
+            opacity: 0.92;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .contact-info span {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .contact-info a {
+            color: #cce4ff;
+        }
+
+        .contact-info a:hover {
+            color: #fff;
+        }
+
+        /* ===== MAIN CONTAINER ===== */
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== SECTION ===== */
+        .section {
+            background: #fff;
+            margin: 30px auto;
+            padding: 40px 45px;
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            max-width: 960px;
+        }
+
+        .section:first-of-type {
+            margin-top: 40px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            color: #1a3d5c;
+            margin-bottom: 30px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid #2a6496;
+            display: inline-block;
+        }
+
+        /* ===== ABOUT ME ===== */
+        .about-text {
+            font-size: 1.02rem;
+            color: #555;
+            line-height: 1.85;
+        }
+
+        /* ===== EDUCATION ===== */
+        .edu-item {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 28px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .edu-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .edu-logo {
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            background: #e8f0fe;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #2a6496;
+            font-weight: bold;
+        }
+
+        .edu-content {
+            flex: 1;
+        }
+
+        .edu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .edu-school {
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: #1a3d5c;
+        }
+
+        .edu-date {
+            font-size: 0.88rem;
+            color: #888;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .edu-degree {
+            font-size: 0.95rem;
+            color: #555;
+            margin-top: 3px;
+        }
+
+        .edu-detail {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 5px;
+        }
+
+        /* ===== EXPERIENCE BLOCKS (Research / Internship) ===== */
+        .exp-block {
+            margin-bottom: 32px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .exp-block:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 4px;
+        }
+
+        .exp-title {
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #1a3d5c;
+        }
+
+        .exp-date {
+            font-size: 0.88rem;
+            color: #888;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .exp-org {
+            font-size: 0.95rem;
+            color: #2a6496;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .exp-role {
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .exp-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .exp-list li {
+            position: relative;
+            padding-left: 18px;
+            margin-bottom: 6px;
+            font-size: 0.93rem;
+            color: #555;
+            line-height: 1.65;
+        }
+
+        .exp-list li::before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #2a6496;
+            font-weight: bold;
+        }
+
+        /* ===== PROJECT ===== */
+        .proj-item {
+            margin-bottom: 28px;
+            padding: 22px 25px;
+            background: #f8fafd;
+            border-radius: 8px;
+            border-left: 4px solid #2a6496;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .proj-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .proj-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .proj-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .proj-name {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #1a3d5c;
+        }
+
+        .proj-date {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .proj-desc {
+            font-size: 0.93rem;
+            color: #555;
+            margin-top: 8px;
+            line-height: 1.65;
+        }
+
+        .proj-tech {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-tag {
+            background: #e0ecf7;
+            color: #2a6496;
+            font-size: 0.78rem;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-weight: 500;
+        }
+
+        /* ===== AWARDS ===== */
+        .award-list {
+            list-style: none;
+        }
+
+        .award-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f0f0;
+            gap: 15px;
+        }
+
+        .award-list li:last-child {
+            border-bottom: none;
+        }
+
+        .award-icon {
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-right: 4px;
+        }
+
+        .award-text {
+            flex: 1;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .award-text strong {
+            color: #1a3d5c;
+        }
+
+        .award-year {
+            font-size: 0.85rem;
+            color: #888;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        /* ===== EXTRACURRICULAR ===== */
+        .extra-item {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 22px;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .extra-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .extra-icon {
+            flex-shrink: 0;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, #e8f0fe, #d0e2f7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .extra-content {
+            flex: 1;
+        }
+
+        .extra-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .extra-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #1a3d5c;
+        }
+
+        .extra-date {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        .extra-desc {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 4px;
+            line-height: 1.6;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 20px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            nav ul li a {
+                padding: 12px 14px;
+                font-size: 0.82rem;
+            }
+
+            .hero {
+                padding: 55px 15px 45px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .section {
+                padding: 28px 22px;
+                margin: 20px 15px;
+            }
+
+            .section-title {
+                font-size: 1.35rem;
+            }
+
+            .edu-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .edu-header, .exp-header, .proj-header {
+                flex-direction: column;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .extra-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* ===== SCROLL OFFSET FOR NAV ===== */
+        section[id] {
+            scroll-margin-top: 70px;
+        }
+
+        /* ===== SMOOTH SCROLL ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ==================== NAVIGATION ==================== -->
+<nav>
+    <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#internship">Internship</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#awards">Awards</a></li>
+        <li><a href="#activities">Activities</a></li>
+    </ul>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+    <div class="hero-content">
+        <!-- Replace the src below with your actual photo -->
+        <img class="avatar" src="https://via.placeholder.com/150" alt="Your Photo">
+        <h1>Your Name (中文名)</h1>
+        <p class="subtitle">Undergraduate Student at XYZ University · Major in Computer Science</p>
+        <div class="contact-info">
+            <span>📧 <a href="mailto:yourname@email.com">yourname@email.com</a></span>
+            <span>📱 +86-138-0000-0000</span>
+            <span>🔗 <a href="https://github.com/yourgithub" target="_blank">GitHub</a></span>
+            <span>🎓 <a href="https://scholar.google.com/" target="_blank">Google Scholar</a></span>
+            <span>💼 <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a></span>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+
+    <!-- ==================== ABOUT ME ==================== -->
+    <section id="about" class="section">
+        <h2 class="section-title">About Me</h2>
+        <p class="about-text">
+            I am a senior undergraduate student at <strong>XYZ University</strong>, majoring in Computer Science. 
+            My research interests lie in <strong>Machine Learning</strong>, <strong>Natural Language Processing</strong>, 
+            and <strong>Computer Vision</strong>. I have been fortunate to work with 
+            <a href="#">Prof. Example Advisor</a> at the XX Lab. 
+            I am actively seeking <strong>Ph.D. positions for Fall 2026</strong>.
+        </p>
+    </section>
+
+    <!-- ==================== EDUCATION ==================== -->
+    <section id="education" class="section">
+        <h2 class="section-title">Education</h2>
+
+        <div class="edu-item">
+            <div class="edu-logo">🏛</div>
+            <div class="edu-content">
+                <div class="edu-header">
+                    <span class="edu-school">XYZ University</span>
+                    <span class="edu-date">Sep. 2021 – Jun. 2025 (Expected)</span>
+                </div>
+                <div class="edu-degree">B.Eng. in Computer Science and Technology</div>
+                <div class="edu-detail">GPA: 3.85 / 4.00 &nbsp;|&nbsp; Ranking: Top 5%</div>
+                <div class="edu-detail">Core Courses: Data Structures (95), Machine Learning (92), Operating Systems (90), Linear Algebra (94)</div>
+            </div>
+        </div>
+
+        <div class="edu-item">
+            <div class="edu-logo">🏛</div>
+            <div class="edu-content">
+                <div class="edu-header">
+                    <span class="edu-school">ABC University (Exchange Program)</span>
+                    <span class="edu-date">Jan. 2024 – May 2024</span>
+                </div>
+                <div class="edu-degree">Visiting Student, Department of Computer Science</div>
+                <div class="edu-detail">GPA: 3.90 / 4.00</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== RESEARCH EXPERIENCE ==================== -->
+    <section id="research" class="section">
+        <h2 class="section-title">Research Experience</h2>
+
+        <!-- Research #1 -->
+        <div class="exp-block">
+            <div class="exp-header">
+                <span class="exp-title">Research Topic Title One</span>
+                <span class="exp-date">Jun. 2024 – Present</span>
+            </div>
+            <div class="exp-org">XX Lab, XYZ University</div>
+            <div class="exp-role">Research Assistant, advised by Prof. Example Name</div>
+            <ul class="exp-list">
+                <li>Conducted research on [specific topic], focusing on [specific problem or methodology].</li>
+                <li>Proposed a novel framework for [task], achieving state-of-the-art results on [benchmark dataset].</li>
+                <li>Implemented the model using PyTorch and ran experiments on NVIDIA A100 GPUs.</li>
+                <li>Paper submitted to [Conference/Journal Name, e.g., NeurIPS 2025], currently under review.</li>
+            </ul>
+        </div>
+
+        <!-- Research #2 -->
+        <div class="exp-block">
+            <div class="exp-header">
+                <span class="exp-title">Research Topic Title Two</span>
+                <span class="exp-date">Jan. 2024 – May 2024</span>
+            </div>
+            <div class="exp-org">Department of CS, ABC University</div>
+            <div class="exp-role">Visiting Researcher, advised by Prof. Another Name</div>
+            <ul class="exp-list">
+                <li>Explored [specific research area] and designed experiments to validate [hypothesis].</li>
+                <li>Developed a data pipeline to preprocess and augment [type of data, e.g., medical images].</li>
+                <li>Collaborated with a team of 4 researchers to co-author a paper published at [Venue].</li>
+            </ul>
+        </div>
+
+        <!-- Research #3 -->
+        <div class="exp-block">
+            <div class="exp-header">
+                <span class="exp-title">Research Topic Title Three</span>
+                <span class="exp-date">Sep. 2023 – Dec. 2023</span>
+            </div>
+            <div class="exp-org">YY Research Group, XYZ University</div>
+            <div class="exp-role">Undergraduate Researcher, advised by Prof. Third Name</div>
+            <ul class="exp-list">
+                <li>Investigated [problem] in the context of [application domain].</li>
+                <li>Built and optimized a [type of model, e.g., transformer-based] model for [task].</li>
+                <li>Improved baseline performance by 12% on [metric] through [technique].</li>
+            </ul>
+        </div>
+
+        <!-- Research #4 -->
+        <div class="exp-block">
+            <div class="exp-header">
+                <span class="exp-title">Research Topic Title Four</span>
+                <span class="exp-date">Mar. 2023 – Aug. 2023</span>
+            </div>
+            <div class="exp-org">ZZ Laboratory, XYZ University</div>
+            <div class="exp-role">Research Intern, advised by Prof. Fourth Name</div>
+            <ul class="exp-list">
+                <li>Conducted literature review on [topic] and identified key research gaps.</li>
+                <li>Designed and implemented a prototype system for [specific application].</li>
+                <li>Presented findings at the lab's weekly seminar and received positive feedback.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ==================== INTERNSHIP EXPERIENCE ==================== -->
+    <section id="internship" class="section">
+        <h2 class="section-title">Internship Experience</h2>
+
+        <!-- Internship #1 -->
+        <div class="exp-block">
+            <div class="exp-header">
+                <span class="exp-title">Algorithm Engineer Intern</span>
+                <span class="exp-date">Jun. 2024 – Sep. 2024</span>
+            </div>
+            <div class="exp-org">Company Name A (e.g., ByteDance / Tencent / Google)</div>
+            <div class="exp-role">Team: Search & Recommendation, Mentor: Dr. Someone</div>
+            <ul class="exp-list">
+                <li>Designed and deployed a [model/algorithm] for [specific business scenario], improving [metric] by X%.</li>
+                <li>Processed and analyzed large-scale datasets (10M+ records) using Spark and Hive.</li>
+                <li>Collaborated with the product team to integrate the model into the production pipeline.</li>
+                <li>Wrote technical documentation and presented results to senior engineers.</li>
+            </ul>
+        </div>
+
+        <!-- Internship #2 -->
+        <div class="exp-block">
+            <div class="exp-header">
+                <span class="exp-title">Software Development Intern</span>
+                <span class="exp-date">Jul. 2023 – Sep. 2023</span>
+            </div>
+            <div class="exp-org">Company Name B (e.g., Microsoft / Alibaba / Startup XYZ)</div>
+            <div class="exp-role">Team: Backend Engineering</div>
+            <ul class="exp-list">
+                <li>Developed RESTful APIs using [framework, e.g., Spring Boot / Django] for [feature].</li>
+                <li>Optimized database queries, reducing average response time by 40%.</li>
+                <li>Participated in code reviews and adopted CI/CD best practices using Jenkins and Docker.</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS ==================== -->
+    <section id="projects" class="section">
+        <h2 class="section-title">Projects</h2>
+
+        <!-- Project #1 -->
+        <div class="proj-item">
+            <div class="proj-header">
+                <span class="proj-name">Project Name One</span>
+                <span class="proj-date">Oct. 2024 – Dec. 2024</span>
+            </div>
+            <p class="proj-desc">
+                Brief description of the project. For example: Built an end-to-end deep learning system for 
+                real-time object detection in autonomous driving scenarios. Achieved 95% mAP on the custom dataset. 
+                <a href="#">[GitHub]</a> <a href="#">[Demo]</a>
+            </p>
+            <div class="proj-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">YOLO</span>
+            </div>
+        </div>
+
+        <!-- Project #2 -->
+        <div class="proj-item">
+            <div class="proj-header">
+                <span class="proj-name">Project Name Two</span>
+                <span class="proj-date">Jul. 2024 – Sep. 2024</span>
+            </div>
+            <p class="proj-desc">
+                Brief description. For example: Developed a full-stack web application for collaborative 
+                document editing with real-time synchronization, supporting 100+ concurrent users.
+                <a href="#">[GitHub]</a>
+            </p>
+            <div class="proj-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">WebSocket</span>
+                <span class="tech-tag">MongoDB</span>
+            </div>
+        </div>
+
+        <!-- Project #3 -->
+        <div class="proj-item">
+            <div class="proj-header">
+                <span class="proj-name">Project Name Three</span>
+                <span class="proj-date">Mar. 2024 – May 2024</span>
+            </div>
+            <p class="proj-desc">
+                Brief description. For example: Designed an intelligent chatbot powered by large language models 
+                with retrieval-augmented generation (RAG) for customer service automation.
+                <a href="#">[GitHub]</a>
+            </p>
+            <div class="proj-tech">
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">GPT-4 API</span>
+                <span class="tech-tag">FAISS</span>
+                <span class="tech-tag">FastAPI</span>
+            </div>
+        </div>
+
+        <!-- Project #4 -->
+        <div class="proj-item">
+            <div class="proj-header">
+                <span class="proj-name">Project Name Four</span>
+                <span class="proj-date">Nov. 2023 – Jan. 2024</span>
+            </div>
+            <p class="proj-desc">
+                Brief description. For example: Implemented a mini operating system kernel from scratch, including 
+                process scheduling, memory management, and a simple file system.
+                <a href="#">[GitHub]</a>
+            </p>
+            <div class="proj-tech">
+                <span class="tech-tag">C</span>
+                <span class="tech-tag">x86 Assembly</span>
+                <span class="tech-tag">QEMU</span>
+                <span class="tech-tag">Makefile</span>
+            </div>
+        </div>
+
+        <!-- Project #5 -->
+        <div class="proj-item">
+            <div class="proj-header">
+                <span class="proj-name">Project Name Five</span>
+                <span class="proj-date">May 2023 – Jul. 2023</span>
+            </div>
+            <p class="proj-desc">
+                Brief description. For example: Created a mobile fitness tracking app with personalized workout 
+                recommendations using collaborative filtering algorithms.
+                <a href="#">[GitHub]</a> <a href="#">[App Store]</a>
+            </p>
+            <div class="proj-tech">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Dart</span>
+                <span class="tech-tag">Firebase</span>
+                <span class="tech-tag">TensorFlow Lite</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== AWARDS ==================== -->
+    <section id="awards" class="section">
+        <h2 class="section-title">Awards &amp; Honors</h2>
+        <ul class="award-list">
+            <li>
+                <span class="award-icon">🥇</span>
+                <span class="award-text"><strong>National Scholarship</strong> (Top 1%), Ministry of Education of China</span>
+                <span class="award-year">2024</span>
+            </li>
+            <li>
+                <span class="award-icon">🥈</span>
+                <span class="award-text"><strong>Silver Medal</strong>, International Collegiate Programming Contest (ICPC) Asia Regional</span>
+                <span class="award-year">2023</span>
+            </li>
+            <li>
+                <span class="award-icon">🏆</span>
+                <span class="award-text"><strong>First Prize</strong>, National Mathematical Modeling Competition (CUMCM)</span>
+                <span class="award-year">2023</span>
+            </li>
+            <li>
+                <span class="award-icon">🎖</span>
+                <span class="award-text"><strong>Outstanding Undergraduate Research Award</strong>, XYZ University</span>
+                <span class="award-year">2024</span>
+            </li>
+            <li>
+                <span class="award-icon">🏅</span>
+                <span class="award-text"><strong>Merit Student</strong>, XYZ University (Top 5%)</span>
+                <span class="award-year">2022, 2023</span>
+            </li>
+            <li>
+                <span class="award-icon">🎓</span>
+                <span class="award-text"><strong>Dean's List</strong>, School of Computer Science, XYZ University</span>
+                <span class="award-year">2021 – 2024</span>
+            </li>
+            <li>
+                <span class="award-icon">💡</span>
+                <span class="award-text"><strong>Second Prize</strong>, "Challenge Cup" National College Student Extracurricular Academic Science and Technology Contest</span>
+                <span class="award-year">2023</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- ==================== EXTRACURRICULAR ACTIVITIES ==================== -->
+    <section id="activities" class="section">
+        <h2 class="section-title">Extracurricular Activities</h2>
+
+        <div class="extra-item">
+            <div class="extra-icon">🎤</div>
+            <div class="extra-content">
+                <div class="extra-header">
+                    <span class="extra-title">President, Computer Science Student Association</span>
+                    <span class="extra-date">Sep. 2023 – Jun. 2024</span>
+                </div>
+                <p class="extra-desc">
+                    Organized 10+ technical workshops and hackathons with 500+ participants. 
+                    Managed a team of 30 student officers and coordinated with faculty advisors.
+                </p>
+            </div>
+        </div>
+
+        <div class="extra-item">
+            <div class="extra-icon">🌍</div>
+            <div class="extra-content">
+                <div class="extra-header">
+                    <span class="extra-title">Volunteer, Rural Education Support Program</span>
+                    <span class="extra-date">Jul. 2022 – Aug. 2022</span>
+                </div>
+                <p class="extra-desc">
+                    Taught programming fundamentals and mathematics to 60+ students in rural areas. 
+                    Designed an introductory curriculum for Scratch and Python.
+                </p>
+            </div>
+        </div>
+
+        <div class="extra-item">
+            <div class="extra-icon">📝</div>
+            <div class="extra-content">
+                <div class="extra-header">
+                    <span class="extra-title">Teaching Assistant, Introduction to Algorithms</span>
+                    <span class="extra-date">Sep. 2023 – Jan. 2024</span>
+                </div>
+                <p class="extra-desc">
+                    Held weekly office hours and graded assignments for a class of 120 students. 
+                    Created supplementary learning materials and tutorial videos.
+                </p>
+            </div>
+        </div>
+
+        <div class="extra-item">
+            <div class="extra-icon">🏃</div>
+            <div class="extra-content">
+                <div class="extra-header">
+                    <span class="extra-title">Member, University Marathon Club</span>
+                    <span class="extra-date">Sep. 2021 – Present</span>
+                </div>
+                <p class="extra-desc">
+                    Completed 3 half-marathons. Passionate about long-distance running and outdoor activities.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ==================== FOOTER ==================== -->
+<footer>
+    <p>&copy; 2025 Your Name. Last updated: Jun. 2025.</p>
+    <p style="margin-top: 5px; font-size: 0.8rem; color: #bbb;">
+        "Stay hungry, stay foolish." — Steve Jobs
+    </p>
+</footer>
+
+</body>
+</html>
