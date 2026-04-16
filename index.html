@@ -35,10 +35,10 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(135deg, #1a3d5c, #2a6496);
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
             padding: 0;
             z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.4);
         }
 
         nav ul {
@@ -69,38 +69,71 @@
         /* ===== HERO / HEADER ===== */
         .hero {
             margin-top: 56px;
-            background: linear-gradient(135deg, #1a3d5c, #2a6496, #3a8fd4);
+            position: relative;
             color: #fff;
-            padding: 70px 20px 60px;
+            padding: 0;
             text-align: center;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://cdn-1.motorsport.com/images/amp/YEQ1Jvd0/s1000/max-verstappen-red-bull-racing.jpg'), url('https://images.unsplash.com/photo-1504707748692-419802cf939d?w=1600');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(10, 10, 30, 0.55) 0%, rgba(10, 10, 30, 0.75) 60%, rgba(10, 10, 30, 0.92) 100%);
+            z-index: 1;
         }
 
         .hero-content {
+            position: relative;
+            z-index: 2;
             max-width: 800px;
             margin: 0 auto;
-        }
-
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 4px solid rgba(255,255,255,0.8);
-            margin-bottom: 20px;
-            object-fit: cover;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 90px 20px 70px;
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+            letter-spacing: 1px;
         }
 
         .hero .subtitle {
-            font-size: 1.15rem;
-            opacity: 0.92;
-            margin-bottom: 20px;
+            font-size: 1.18rem;
+            opacity: 0.95;
+            margin-bottom: 8px;
             font-weight: 300;
+            text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero .subtitle-seeking {
+            font-size: 0.98rem;
+            opacity: 0.85;
+            margin-bottom: 22px;
+            font-weight: 400;
+            color: #ffd700;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.5);
         }
 
         .contact-info {
@@ -119,7 +152,8 @@
         }
 
         .contact-info a {
-            color: #cce4ff;
+            color: #b8d8ff;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.4);
         }
 
         .contact-info a:hover {
@@ -227,6 +261,55 @@
             font-size: 0.9rem;
             color: #777;
             margin-top: 5px;
+        }
+
+        /* ===== TECHNICAL SKILLS ===== */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .skill-group {
+            background: #f8fafd;
+            border-radius: 10px;
+            padding: 20px 22px;
+            border: 1px solid #e8f0fe;
+        }
+
+        .skill-group-title {
+            font-size: 0.92rem;
+            font-weight: 600;
+            color: #1a3d5c;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-group-title .skill-icon {
+            font-size: 1.1rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .skill-tag {
+            background: #e0ecf7;
+            color: #2a6496;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 14px;
+            font-weight: 500;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: #cce0f5;
+            transform: translateY(-1px);
         }
 
         /* ===== EXPERIENCE BLOCKS (Research / Internship) ===== */
@@ -474,8 +557,12 @@
                 font-size: 0.82rem;
             }
 
+            .hero-content {
+                padding: 60px 15px 50px;
+            }
+
             .hero {
-                padding: 55px 15px 45px;
+                min-height: 400px;
             }
 
             .hero h1 {
@@ -509,6 +596,10 @@
                 flex-direction: column;
                 gap: 10px;
             }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         /* ===== SCROLL OFFSET FOR NAV ===== */
@@ -529,6 +620,7 @@
     <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="#internship">Internship</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -539,16 +631,17 @@
 
 <!-- ==================== HERO ==================== -->
 <header class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
     <div class="hero-content">
-        <!-- Replace the src below with your actual photo -->
-        <img class="avatar" src="https://via.placeholder.com/150" alt="Your Photo">
         <h1>ZHANG Motong (张沫潼)</h1>
-        <p class="subtitle">Undergraduate Student at Xidian University · Major in Electronic Information Engineering</p>
+        <p class="subtitle">Senior Undergraduate at Xidian University · Electronic Information Engineering</p>
+        <p class="subtitle-seeking">🏁 Actively seeking Ph.D. positions for Fall 2027</p>
         <div class="contact-info">
             <span>📧 <a href="mailto:karinazhang0518@outlook.com">karinazhang0518@outlook.com</a></span>
             <span>🔗 <a href="https://github.com/Caelum518" target="_blank">GitHub</a></span>
             <span>🎓 <a href="https://scholar.google.com/" target="_blank">Google Scholar</a></span>
-            <span>💼 <a href="https://www.linkedin.com/in/yourlinkedin" target="_blank">LinkedIn</a></span>
+            <span>💼 <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a></span>
         </div>
     </div>
 </header>
@@ -559,11 +652,19 @@
     <section id="about" class="section">
         <h2 class="section-title">About Me</h2>
         <p class="about-text">
-            I am a senior undergraduate student at <strong>XYZ University</strong>, majoring in Computer Science. 
-            My research interests lie in <strong>Machine Learning</strong>, <strong>Natural Language Processing</strong>, 
-            and <strong>Computer Vision</strong>. I have been fortunate to work with 
-            <a href="#">Prof. Example Advisor</a> at the XX Lab. and Li Auto Inc.
-            I am actively seeking <strong>Ph.D. positions for Fall 2028 or former</strong>.
+            I'm a senior undergraduate at <strong>Xidian University</strong>, majoring in Electronic Information Engineering,
+            and I'm genuinely passionate about pushing the boundaries of <strong>Machine Learning</strong>, <strong>Computer Vision</strong>,
+            <strong>Multimodal Tracking</strong>, and <strong>LLM/Foundation Models</strong>.
+            I've had the incredible opportunity to work with
+            <strong>Dr. Hao Li</strong>, <strong>Prof. Rui Yang</strong>, and <strong>Prof. Jie Li</strong> at Xidian University,
+            and I'm currently interning at <strong>Li Auto</strong> on the Foundation Model Team, where I get to dive deep into
+            code-agent architectures and large language model post-training.
+        </p>
+        <p class="about-text" style="margin-top: 14px;">
+            I scored <strong>IELTS 8.0</strong> (Reading 9.0, Listening 9.0) and <strong>CET-6 666/710</strong>,
+            and I'm comfortable working and communicating in English-speaking research environments.
+            I'm actively seeking <strong>Ph.D. positions for Fall 2027</strong> — I'd love to
+            contribute to a research group where I can keep learning, building, and making a real impact.
         </p>
     </section>
 
@@ -575,24 +676,69 @@
             <div class="edu-logo">🏛</div>
             <div class="edu-content">
                 <div class="edu-header">
-                    <span class="edu-school">Xidian University</span>
-                    <span class="edu-date">Sep. 2022 – Jun. 2026 (Expected)</span>
+                    <span class="edu-school">Xidian University, Xi'an, Shaanxi, China</span>
+                    <span class="edu-date">Sep. 2022 – Jul. 2026 (Expected)</span>
                 </div>
-                <div class="edu-degree">B.Eng. in Computer Science and Technology</div>
-                <div class="edu-detail">GPA: 3.6 / 4.00 &nbsp;|&nbsp; Ranking: Top 15%</div>
-                <div class="edu-detail">Core Courses: Data Structures (95), Machine Learning (92), Operating Systems (90), Linear Algebra (94)</div>
+                <div class="edu-degree">B.Eng. in Electronic Information Engineering</div>
+                <div class="edu-detail">GPA: 3.6 / 4.0 &nbsp;|&nbsp; Ranking: Top 15%</div>
+                <div class="edu-detail"><strong>Scholarships:</strong> Individual Scholarship, Second-class University Scholarship, Linkidge Capital Scholarship</div>
+                <div class="edu-detail"><strong>Core Courses:</strong> Advanced Programming (Python): 98 (A+), Computer and Programming (C): 91 (A), Data Structure and Algorithm Application: 86 (A-)</div>
+                <div class="edu-detail"><strong>Language:</strong> CET-6: 666/710 &nbsp;|&nbsp; IELTS: 8.0 (R 9.0, L 9.0, S 7.0, W 6.5)</div>
             </div>
         </div>
+    </section>
 
-        <div class="edu-item">
-            <div class="edu-logo">🏛</div>
-            <div class="edu-content">
-                <div class="edu-header">
-                    <span class="edu-school">ABC University (Exchange Program)</span>
-                    <span class="edu-date">Jan. 2024 – May 2024</span>
+    <!-- ==================== TECHNICAL SKILLS ==================== -->
+    <section id="skills" class="section">
+        <h2 class="section-title">Technical Skills</h2>
+
+        <div class="skills-grid">
+            <div class="skill-group">
+                <div class="skill-group-title"><span class="skill-icon">💻</span> Programming</div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">RISC-V</span>
+                    <span class="skill-tag">LaTeX</span>
                 </div>
-                <div class="edu-degree">Visiting Student, Department of Computer Science</div>
-                <div class="edu-detail">GPA: 3.90 / 4.00</div>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-title"><span class="skill-icon">🧠</span> Machine Learning</div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Computer Vision</span>
+                    <span class="skill-tag">CNN</span>
+                    <span class="skill-tag">Transformers</span>
+                    <span class="skill-tag">YOLO</span>
+                    <span class="skill-tag">Unsupervised Learning</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-title"><span class="skill-icon">🔧</span> Hardware</div>
+                <div class="skill-tags">
+                    <span class="skill-tag">PCB Design</span>
+                    <span class="skill-tag">Altium Designer</span>
+                    <span class="skill-tag">Circuit Simulation</span>
+                    <span class="skill-tag">Multisim</span>
+                    <span class="skill-tag">FPGA</span>
+                    <span class="skill-tag">Quartus</span>
+                </div>
+            </div>
+
+            <div class="skill-group">
+                <div class="skill-group-title"><span class="skill-icon">📊</span> Data Analysis</div>
+                <div class="skill-tags">
+                    <span class="skill-tag">Statistical Modeling</span>
+                    <span class="skill-tag">Time Series</span>
+                    <span class="skill-tag">PCA</span>
+                    <span class="skill-tag">SPSS</span>
+                </div>
             </div>
         </div>
     </section>
@@ -604,61 +750,45 @@
         <!-- Research #1 -->
         <div class="exp-block">
             <div class="exp-header">
-                <span class="exp-title">Research Topic Title One</span>
-                <span class="exp-date">Jun. 2024 – Present</span>
+                <span class="exp-title">Adversarial Attack via Reinforcement Learning</span>
+                <span class="exp-date">Dec. 2023 – Jul. 2024</span>
             </div>
-            <div class="exp-org">XX Lab, XYZ University</div>
-            <div class="exp-role">Research Assistant, advised by Prof. Example Name</div>
+            <div class="exp-org">Dept. of Electronic Engineering, Xidian University</div>
+            <div class="exp-role">Research Assistant &amp; Project Leader, advised by Dr. Hao Li (Associate Professor)</div>
             <ul class="exp-list">
-                <li>Conducted research on [specific topic], focusing on [specific problem or methodology].</li>
-                <li>Proposed a novel framework for [task], achieving state-of-the-art results on [benchmark dataset].</li>
-                <li>Implemented the model using PyTorch and ran experiments on NVIDIA A100 GPUs.</li>
-                <li>Paper submitted to [Conference/Journal Name, e.g., NeurIPS 2025], currently under review.</li>
+                <li>Developed a novel background adversarial attack method through Proximal Policy Optimization (PPO), improving model robustness against real-world perturbations.</li>
+                <li>Fabricated PCB boards for physical-domain experiments, verifying the effectiveness of adversarial samples in real-world settings.</li>
+                <li>Led the student research team as project leader; project rated <strong>Excellent (Top 7%)</strong> in the National Innovation and Entrepreneurship Program.</li>
             </ul>
         </div>
 
         <!-- Research #2 -->
         <div class="exp-block">
             <div class="exp-header">
-                <span class="exp-title">Research Topic Title Two</span>
-                <span class="exp-date">Jan. 2024 – May 2024</span>
+                <span class="exp-title">Intelligent Microwave Filter Design</span>
+                <span class="exp-date">May 2025 – Jul. 2025</span>
             </div>
-            <div class="exp-org">Department of CS, ABC University</div>
-            <div class="exp-role">Visiting Researcher, advised by Prof. Another Name</div>
+            <div class="exp-org">Dept. of Electronic Engineering, Xidian University</div>
+            <div class="exp-role">Research Assistant, advised by Prof. Rui Yang</div>
             <ul class="exp-list">
-                <li>Explored [specific research area] and designed experiments to validate [hypothesis].</li>
-                <li>Developed a data pipeline to preprocess and augment [type of data, e.g., medical images].</li>
-                <li>Collaborated with a team of 4 researchers to co-author a paper published at [Venue].</li>
+                <li>Conducted research on intelligent microwave filter design integrating electromagnetic theory with machine learning and multi-objective optimization for 5G/6G applications.</li>
+                <li>Built a 2000-sample design database using Latin hypercube sampling to ensure comprehensive coverage of the design space.</li>
+                <li>Proposed an intelligent co-optimization mechanism between the ML model and optimization algorithm, enabling efficient exploration of Pareto-optimal filter configurations.</li>
             </ul>
         </div>
 
         <!-- Research #3 -->
         <div class="exp-block">
             <div class="exp-header">
-                <span class="exp-title">Research Topic Title Three</span>
-                <span class="exp-date">Sep. 2023 – Dec. 2023</span>
+                <span class="exp-title">RGB-T Multimodal Object Tracking</span>
+                <span class="exp-date">Nov. 2025 – May 2026 (Expected)</span>
             </div>
-            <div class="exp-org">YY Research Group, XYZ University</div>
-            <div class="exp-role">Undergraduate Researcher, advised by Prof. Third Name</div>
+            <div class="exp-org">Dept. of Electronic Engineering, Xidian University</div>
+            <div class="exp-role">Undergraduate Researcher, advised by Prof. Jie Li</div>
             <ul class="exp-list">
-                <li>Investigated [problem] in the context of [application domain].</li>
-                <li>Built and optimized a [type of model, e.g., transformer-based] model for [task].</li>
-                <li>Improved baseline performance by 12% on [metric] through [technique].</li>
-            </ul>
-        </div>
-
-        <!-- Research #4 -->
-        <div class="exp-block">
-            <div class="exp-header">
-                <span class="exp-title">Research Topic Title Four</span>
-                <span class="exp-date">Mar. 2023 – Aug. 2023</span>
-            </div>
-            <div class="exp-org">ZZ Laboratory, XYZ University</div>
-            <div class="exp-role">Research Intern, advised by Prof. Fourth Name</div>
-            <ul class="exp-list">
-                <li>Conducted literature review on [topic] and identified key research gaps.</li>
-                <li>Designed and implemented a prototype system for [specific application].</li>
-                <li>Presented findings at the lab's weekly seminar and received positive feedback.</li>
+                <li>Reproduced the SOTA RGB-T tracking algorithm FMTrack on the RGBT234 benchmark, establishing a strong performance baseline.</li>
+                <li>Analyzed large-scale multimodal tracking datasets (LasHeR, RGBT234) to understand cross-modal feature alignment challenges.</li>
+                <li>Designing a modal quality-aware adaptive fusion mechanism with frequency-domain interaction to dynamically weight RGB and thermal modalities.</li>
             </ul>
         </div>
     </section>
@@ -670,31 +800,15 @@
         <!-- Internship #1 -->
         <div class="exp-block">
             <div class="exp-header">
-                <span class="exp-title">Algorithm Engineer Intern</span>
-                <span class="exp-date">Jun. 2024 – Sep. 2024</span>
+                <span class="exp-title">LLM Intern — Foundation Model Team</span>
+                <span class="exp-date">Mar. 2026 – Aug. 2026 (Expected)</span>
             </div>
-            <div class="exp-org">Company Name A (e.g., ByteDance / Tencent / Google)</div>
-            <div class="exp-role">Team: Search & Recommendation, Mentor: Dr. Someone</div>
+            <div class="exp-org">Li Auto Inc.</div>
+            <div class="exp-role">Foundation Model Team, MindGPT Platform</div>
             <ul class="exp-list">
-                <li>Designed and deployed a [model/algorithm] for [specific business scenario], improving [metric] by X%.</li>
-                <li>Processed and analyzed large-scale datasets (10M+ records) using Spark and Hive.</li>
-                <li>Collaborated with the product team to integrate the model into the production pipeline.</li>
-                <li>Wrote technical documentation and presented results to senior engineers.</li>
-            </ul>
-        </div>
-
-        <!-- Internship #2 -->
-        <div class="exp-block">
-            <div class="exp-header">
-                <span class="exp-title">Software Development Intern</span>
-                <span class="exp-date">Jul. 2023 – Sep. 2023</span>
-            </div>
-            <div class="exp-org">Company Name B (e.g., Microsoft / Alibaba / Startup XYZ)</div>
-            <div class="exp-role">Team: Backend Engineering</div>
-            <ul class="exp-list">
-                <li>Developed RESTful APIs using [framework, e.g., Spring Boot / Django] for [feature].</li>
-                <li>Optimized database queries, reducing average response time by 40%.</li>
-                <li>Participated in code reviews and adopted CI/CD best practices using Jenkins and Docker.</li>
+                <li>Researched code-agent architectures and state-of-the-art models; wrote technical reports providing insights for the MindGPT platform development.</li>
+                <li>Built robust data processing pipelines for code generation tasks, including data cleaning, filtering, and synthetic data generation at scale.</li>
+                <li>Contributed to post-training optimization through Supervised Fine-Tuning (SFT) and Reinforcement Learning (RL) experiments, improving model performance on downstream tasks.</li>
             </ul>
         </div>
     </section>
@@ -706,95 +820,90 @@
         <!-- Project #1 -->
         <div class="proj-item">
             <div class="proj-header">
-                <span class="proj-name">Project Name One</span>
-                <span class="proj-date">Oct. 2024 – Dec. 2024</span>
+                <span class="proj-name">Deep Learning Land Classification for Remote Sensing</span>
+                <span class="proj-date">2025</span>
             </div>
             <p class="proj-desc">
-                Brief description of the project. For example: Built an end-to-end deep learning system for 
-                real-time object detection in autonomous driving scenarios. Achieved 95% mAP on the custom dataset. 
-                <a href="#">[GitHub]</a> <a href="#">[Demo]</a>
+                Applied contrastive learning with an improved ResNet-18 architecture for multispectral satellite imagery classification.
+                Implemented adaptive image enhancement and multi-scale feature fusion, achieving a <strong>+32% accuracy improvement</strong> over the baseline model.
             </p>
             <div class="proj-tech">
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">PyTorch</span>
-                <span class="tech-tag">OpenCV</span>
-                <span class="tech-tag">YOLO</span>
+                <span class="tech-tag">ResNet</span>
+                <span class="tech-tag">Remote Sensing</span>
             </div>
         </div>
 
         <!-- Project #2 -->
         <div class="proj-item">
             <div class="proj-header">
-                <span class="proj-name">Project Name Two</span>
-                <span class="proj-date">Jul. 2024 – Sep. 2024</span>
+                <span class="proj-name">Super-Resolution with SRGAN</span>
+                <span class="proj-date">2025</span>
             </div>
             <p class="proj-desc">
-                Brief description. For example: Developed a full-stack web application for collaborative 
-                document editing with real-time synchronization, supporting 100+ concurrent users.
-                <a href="#">[GitHub]</a>
+                Designed a residual-based generator-discriminator architecture with sub-pixel convolution for 4× image upscaling.
+                Leveraged VGG-19 perceptual loss to preserve texture realism, producing visually sharper and more detailed super-resolved images.
             </p>
             <div class="proj-tech">
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Node.js</span>
-                <span class="tech-tag">WebSocket</span>
-                <span class="tech-tag">MongoDB</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">SRGAN</span>
+                <span class="tech-tag">Computer Vision</span>
             </div>
         </div>
 
         <!-- Project #3 -->
         <div class="proj-item">
             <div class="proj-header">
-                <span class="proj-name">Project Name Three</span>
-                <span class="proj-date">Mar. 2024 – May 2024</span>
+                <span class="proj-name">Quantitative Investment Factor System</span>
+                <span class="proj-date">2024</span>
             </div>
             <p class="proj-desc">
-                Brief description. For example: Designed an intelligent chatbot powered by large language models 
-                with retrieval-augmented generation (RAG) for customer service automation.
-                <a href="#">[GitHub]</a>
+                Built a text-mining quantitative factor library from financial news, extracting sentiment and event-driven signals.
+                Employed entropy weighting and correlation analysis to construct a robust backtesting framework for factor evaluation.
             </p>
             <div class="proj-tech">
-                <span class="tech-tag">LangChain</span>
-                <span class="tech-tag">GPT-4 API</span>
-                <span class="tech-tag">FAISS</span>
-                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">NLP</span>
+                <span class="tech-tag">Finance</span>
+                <span class="tech-tag">SPSS</span>
             </div>
         </div>
 
         <!-- Project #4 -->
         <div class="proj-item">
             <div class="proj-header">
-                <span class="proj-name">Project Name Four</span>
-                <span class="proj-date">Nov. 2023 – Jan. 2024</span>
+                <span class="proj-name">Multimodal Medical Image Segmentation</span>
+                <span class="proj-date">2023</span>
             </div>
             <p class="proj-desc">
-                Brief description. For example: Implemented a mini operating system kernel from scratch, including 
-                process scheduling, memory management, and a simple file system.
-                <a href="#">[GitHub]</a>
+                Implemented a Swin-Unet framework for MRI/CT medical image segmentation, achieving <strong>94% accuracy</strong>.
+                Applied CUDA acceleration to optimize inference, resulting in a <strong>2.5× speedup</strong> in processing time.
             </p>
             <div class="proj-tech">
-                <span class="tech-tag">C</span>
-                <span class="tech-tag">x86 Assembly</span>
-                <span class="tech-tag">QEMU</span>
-                <span class="tech-tag">Makefile</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">Swin-Unet</span>
+                <span class="tech-tag">Medical AI</span>
             </div>
         </div>
 
         <!-- Project #5 -->
         <div class="proj-item">
             <div class="proj-header">
-                <span class="proj-name">Project Name Five</span>
-                <span class="proj-date">May 2023 – Jul. 2023</span>
+                <span class="proj-name">Financial Vulnerability Detection</span>
+                <span class="proj-date">2023</span>
             </div>
             <p class="proj-desc">
-                Brief description. For example: Created a mobile fitness tracking app with personalized workout 
-                recommendations using collaborative filtering algorithms.
-                <a href="#">[GitHub]</a> <a href="#">[App Store]</a>
+                Developed a GA-optimized SVM combined with K-means clustering for student financial risk detection.
+                Used PCA to reduce 17 behavioral indicators, achieving <strong>76% accuracy</strong> on a dataset of 4,000+ students.
             </p>
             <div class="proj-tech">
-                <span class="tech-tag">Flutter</span>
-                <span class="tech-tag">Dart</span>
-                <span class="tech-tag">Firebase</span>
-                <span class="tech-tag">TensorFlow Lite</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">SVM</span>
+                <span class="tech-tag">K-Means</span>
+                <span class="tech-tag">PCA</span>
             </div>
         </div>
     </section>
@@ -805,38 +914,58 @@
         <ul class="award-list">
             <li>
                 <span class="award-icon">🥇</span>
-                <span class="award-text"><strong>National Scholarship</strong> (Top 1%), Ministry of Education of China</span>
+                <span class="award-text"><strong>Meritorious Winner</strong>, International Mathematical Contest in Modeling (MCM/ICM)</span>
                 <span class="award-year">2024</span>
             </li>
             <li>
-                <span class="award-icon">🥈</span>
-                <span class="award-text"><strong>Silver Medal</strong>, International Collegiate Programming Contest (ICPC) Asia Regional</span>
-                <span class="award-year">2023</span>
-            </li>
-            <li>
                 <span class="award-icon">🏆</span>
-                <span class="award-text"><strong>First Prize</strong>, National Mathematical Modeling Competition (CUMCM)</span>
+                <span class="award-text"><strong>First Prize</strong>, Contemporary Undergraduate Mathematical Contest in Modeling (CUMCM)</span>
                 <span class="award-year">2023</span>
             </li>
             <li>
-                <span class="award-icon">🎖</span>
-                <span class="award-text"><strong>Outstanding Undergraduate Research Award</strong>, XYZ University</span>
+                <span class="award-icon">💡</span>
+                <span class="award-text"><strong>National Innovation and Entrepreneurship Program</strong> — Project Leader, rated Excellent (Top 7%)</span>
+                <span class="award-year">2025</span>
+            </li>
+            <li>
+                <span class="award-icon">🥈</span>
+                <span class="award-text"><strong>Second Prize</strong>, National College Students Mathematics Competition (Provincial)</span>
+                <span class="award-year">2025</span>
+            </li>
+            <li>
+                <span class="award-icon">⭐</span>
+                <span class="award-text"><strong>Outstanding Student</strong>, Xidian University</span>
+                <span class="award-year">2024</span>
+            </li>
+            <li>
+                <span class="award-icon">🔬</span>
+                <span class="award-text"><strong>"Dexian" Innovation &amp; Technology Program</strong> — Team Leader</span>
+                <span class="award-year">2025</span>
+            </li>
+            <li>
+                <span class="award-icon">🥉</span>
+                <span class="award-text"><strong>Bronze Award</strong>, China International Innovation Competition (University Level)</span>
                 <span class="award-year">2024</span>
             </li>
             <li>
                 <span class="award-icon">🏅</span>
-                <span class="award-text"><strong>Merit Student</strong>, XYZ University (Top 5%)</span>
-                <span class="award-year">2022, 2023</span>
+                <span class="award-text"><strong>Second Prize</strong>, 35th &amp; 34th "Spark Cup" Academic Technology Competition</span>
+                <span class="award-year">2023 &amp; 2024</span>
+            </li>
+            <li>
+                <span class="award-icon">🎬</span>
+                <span class="award-text"><strong>First Prize</strong>, 3rd University Micro-Video Creation Competition</span>
+                <span class="award-year">2022</span>
+            </li>
+            <li>
+                <span class="award-icon">✍️</span>
+                <span class="award-text"><strong>Third Prize</strong>, 9th University English Writing Contest</span>
+                <span class="award-year">2023</span>
             </li>
             <li>
                 <span class="award-icon">🎓</span>
-                <span class="award-text"><strong>Dean's List</strong>, School of Computer Science, XYZ University</span>
-                <span class="award-year">2021 – 2024</span>
-            </li>
-            <li>
-                <span class="award-icon">💡</span>
-                <span class="award-text"><strong>Second Prize</strong>, "Challenge Cup" National College Student Extracurricular Academic Science and Technology Contest</span>
-                <span class="award-year">2023</span>
+                <span class="award-text"><strong>Individual Scholarship</strong>, Second-class University Scholarship, Linkidge Capital Scholarship</span>
+                <span class="award-year">2022 – 2025</span>
             </li>
         </ul>
     </section>
@@ -846,56 +975,27 @@
         <h2 class="section-title">Extracurricular Activities</h2>
 
         <div class="extra-item">
-            <div class="extra-icon">🎤</div>
+            <div class="extra-icon">📣</div>
             <div class="extra-content">
                 <div class="extra-header">
-                    <span class="extra-title">President, Computer Science Student Association</span>
-                    <span class="extra-date">Sep. 2023 – Jun. 2024</span>
+                    <span class="extra-title">Core Member, University Publicity Department</span>
+                    <span class="extra-date">Oct. 2022 – Sep. 2023</span>
                 </div>
                 <p class="extra-desc">
-                    Organized 10+ technical workshops and hackathons with 500+ participants. 
-                    Managed a team of 30 student officers and coordinated with faculty advisors.
+                    Contributed to university-level media and promotional content creation, helping shape the public image and outreach of the department through articles, graphics, and event coverage.
                 </p>
             </div>
         </div>
 
         <div class="extra-item">
-            <div class="extra-icon">🌍</div>
+            <div class="extra-icon">🎓</div>
             <div class="extra-content">
                 <div class="extra-header">
-                    <span class="extra-title">Volunteer, Rural Education Support Program</span>
-                    <span class="extra-date">Jul. 2022 – Aug. 2022</span>
+                    <span class="extra-title">University Peer Mentor, Dept. of Electronic Engineering</span>
+                    <span class="extra-date">Sep. 2024 – Present</span>
                 </div>
                 <p class="extra-desc">
-                    Taught programming fundamentals and mathematics to 60+ students in rural areas. 
-                    Designed an introductory curriculum for Scratch and Python.
-                </p>
-            </div>
-        </div>
-
-        <div class="extra-item">
-            <div class="extra-icon">📝</div>
-            <div class="extra-content">
-                <div class="extra-header">
-                    <span class="extra-title">Teaching Assistant, Introduction to Algorithms</span>
-                    <span class="extra-date">Sep. 2023 – Jan. 2024</span>
-                </div>
-                <p class="extra-desc">
-                    Held weekly office hours and graded assignments for a class of 120 students. 
-                    Created supplementary learning materials and tutorial videos.
-                </p>
-            </div>
-        </div>
-
-        <div class="extra-item">
-            <div class="extra-icon">🏃</div>
-            <div class="extra-content">
-                <div class="extra-header">
-                    <span class="extra-title">Member, University Marathon Club</span>
-                    <span class="extra-date">Sep. 2021 – Present</span>
-                </div>
-                <p class="extra-desc">
-                    Completed 3 half-marathons. Passionate about long-distance running and outdoor activities.
+                    Mentoring junior students in academic planning and course guidance, sharing insights on research opportunities, study strategies, and navigating the engineering curriculum.
                 </p>
             </div>
         </div>
@@ -905,9 +1005,9 @@
 
 <!-- ==================== FOOTER ==================== -->
 <footer>
-    <p>&copy; 2025 Your Name. Last updated: Jun. 2025.</p>
+    <p>&copy; 2025 Motong Zhang. Last updated: Apr. 2026.</p>
     <p style="margin-top: 5px; font-size: 0.8rem; color: #bbb;">
-        "Stay hungry, stay foolish." — Steve Jobs
+        "If you no longer go for a gap that exists, you are no longer a racing driver." — Ayrton Senna
     </p>
 </footer>
 
