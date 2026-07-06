@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motong Zhang - Homepage</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Lato', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.75;
+            font-size: 15px;
+        }
+
+        a { color: #2980b9; text-decoration: none; transition: color 0.2s; }
+        a:hover { color: #1a5276; text-decoration: underline; }
+
+        /* NAV */
+        nav {
+            position: fixed; top: 0; width: 100%;
+            background: #1a1a2e;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        nav ul {
+            list-style: none; display: flex; justify-content: center;
+            max-width: 1000px; margin: 0 auto;
+        }
+        nav ul li a {
+            display: block; color: #eee; padding: 14px 20px;
+            font-size: 0.88rem; font-weight: 400; letter-spacing: 0.3px;
+            transition: background 0.3s; text-decoration: none;
+        }
+        nav ul li a:hover { background: rgba(255,255,255,0.1); text-decoration: none; }
+
+        /* LAYOUT */
+        .wrapper {
+            display: flex; max-width: 1050px;
+            margin: 70px auto 0; padding: 30px 20px; gap: 40px;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 220px; flex-shrink: 0;
+            position: sticky; top: 90px; align-self: flex-start;
+        }
+        .sidebar .avatar {
+            width: 180px; height: 180px; border-radius: 50%;
+            background: #ddd; display: flex; align-items: center;
+            justify-content: center; margin: 0 auto 16px; overflow: hidden;
+        }
+        .sidebar .avatar img {
+            width: 100%; height: 100%; object-fit: cover; border-radius: 50%;
+        }
+        .sidebar .name {
+            text-align: center; font-size: 1.3rem; font-weight: 700;
+            color: #222; margin-bottom: 4px;
+        }
+        .sidebar .name-cn {
+            text-align: center; font-size: 0.95rem; color: #666; margin-bottom: 12px;
+        }
+        .sidebar .bio {
+            text-align: center; font-size: 0.82rem; color: #777;
+            margin-bottom: 16px; line-height: 1.5;
+        }
+        .sidebar .links { list-style: none; font-size: 0.85rem; }
+        .sidebar .links li {
+            margin-bottom: 8px; display: flex; align-items: center; gap: 8px;
+        }
+        .sidebar .links li i { width: 16px; text-align: center; color: #555; }
+        .sidebar .social-icons {
+            display: flex; justify-content: center; gap: 12px; margin-top: 16px;
+        }
+        .sidebar .social-icons a {
+            width: 32px; height: 32px; border-radius: 50%;
+            background: #eee; display: flex; align-items: center;
+            justify-content: center; color: #555; font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+        .sidebar .social-icons a:hover {
+            background: #2980b9; color: #fff; text-decoration: none;
+        }
+
+        /* CONTENT */
+        .content { flex: 1; min-width: 0; }
+        .content section { margin-bottom: 36px; }
+        .content h2 {
+            font-size: 1.4rem; font-weight: 700; color: #1a1a2e;
+            border-bottom: 2px solid #e0e0e0; padding-bottom: 8px; margin-bottom: 16px;
+        }
+        .content h3 {
+            font-size: 1.05rem; font-weight: 700; color: #2c3e50;
+            margin-bottom: 8px; margin-top: 20px;
+        }
+        .content p { margin-bottom: 12px; }
+
+        .highlight-box {
+            background: #fff3cd; border-left: 4px solid #ffc107;
+            padding: 10px 14px; margin: 12px 0; font-size: 0.9rem; border-radius: 2px;
+        }
+
+        /* NEWS */
+        .news-list { list-style: none; }
+        .news-list li { padding: 6px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem; }
+        .news-list li:last-child { border-bottom: none; }
+        .news-date { display: inline-block; width: 80px; font-weight: 700; color: #555; }
+
+        /* RESEARCH */
+        .research-item {
+            background: #fff; border: 1px solid #e8e8e8;
+            border-radius: 6px; padding: 16px 20px; margin-bottom: 14px;
+        }
+        .research-item .title { font-weight: 700; font-size: 0.95rem; color: #1a1a2e; margin-bottom: 6px; }
+        .research-item .meta { font-size: 0.82rem; color: #888; margin-bottom: 8px; }
+        .research-item .desc { font-size: 0.88rem; color: #444; line-height: 1.7; }
+        .research-item .links-row { margin-top: 8px; font-size: 0.82rem; }
+        .research-item .links-row a {
+            display: inline-block; background: #ecf0f1; color: #2c3e50;
+            padding: 3px 10px; border-radius: 3px; margin-right: 6px;
+            transition: background 0.2s;
+        }
+        .research-item .links-row a:hover { background: #d5dbdb; text-decoration: none; }
+
+        .research-group-header {
+            background: #f0f4f8; padding: 12px 16px;
+            border-radius: 6px; margin-bottom: 14px; margin-top: 20px;
+        }
+        .research-group-header h3 { margin: 0; font-size: 1rem; color: #1a1a2e; }
+        .research-group-header .subtitle { font-size: 0.82rem; color: #666; margin-top: 2px; }
+
+        /* STORYLINE */
+        .storyline {
+            background: #f8f9fa; border-left: 3px solid #3498db;
+            padding: 12px 16px; margin-bottom: 18px; border-radius: 0 6px 6px 0;
+        }
+        .storyline .sl-title { font-weight: 700; font-size: 0.88rem; color: #2c3e50; margin-bottom: 6px; }
+        .storyline .sl-text { font-size: 0.85rem; color: #555; line-height: 1.6; }
+
+        /* FIGURE */
+        .figure-container {
+            margin: 14px 0; text-align: center;
+        }
+        .figure-container img {
+            max-width: 100%; border: 1px solid #e0e0e0;
+            border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .figure-container .caption {
+            font-size: 0.8rem; color: #888; margin-top: 6px; font-style: italic;
+        }
+
+        /* EDUCATION */
+        .edu-item { display: flex; gap: 14px; margin-bottom: 16px; align-items: flex-start; }
+        .edu-item .edu-icon {
+            width: 40px; height: 40px; border-radius: 50%; background: #ecf0f1;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0; color: #2c3e50;
+        }
+        .edu-item .edu-info h4 { font-size: 0.95rem; font-weight: 700; color: #222; margin-bottom: 2px; }
+        .edu-item .edu-info p { font-size: 0.85rem; color: #666; margin-bottom: 2px; }
+
+        /* HONORS */
+        .honors-list { list-style: none; }
+        .honors-list li { padding: 5px 0; font-size: 0.9rem; border-bottom: 1px solid #f5f5f5; }
+        .honors-list li:last-child { border-bottom: none; }
+        .honors-list .year { display: inline-block; width: 50px; font-weight: 700; color: #555; }
+
+        /* SKILLS */
+        .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .skill-tag {
+            background: #ecf0f1; padding: 6px 12px; border-radius: 4px;
+            font-size: 0.82rem; color: #2c3e50;
+        }
+
+        footer {
+            text-align: center; padding: 30px; font-size: 0.8rem;
+            color: #999; border-top: 1px solid #eee; margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .wrapper { flex-direction: column; padding: 70px 16px 20px; gap: 20px; }
+            .sidebar { width: 100%; position: static; display: flex; flex-direction: column; align-items: center; }
+            nav ul { flex-wrap: wrap; }
+            nav ul li a { padding: 10px 12px; font-size: 0.8rem; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#news">News</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#honors">Honors</a></li>
+    </ul>
+</nav>
+
+<div class="wrapper">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="avatar">
+            <img src="photo.png" alt="Motong Zhang">
+        </div>
+        <div class="name">Motong Zhang</div>
+        <div class="name-cn">张沫潼</div>
+        <div class="bio">Incoming M.S. @ HKU CDS<br>Multimodal Agents · Agent RL</div>
+
+        <ul class="links">
+            <li><i class="fas fa-map-marker-alt"></i> Hong Kong, China</li>
+            <li><i class="fas fa-envelope"></i> <a href="mailto:karinazhang0518@outlook.com">Email</a></li>
+            <li><i class="fab fa-github"></i> <a href="https://github.com/Caelum518" target="_blank">GitHub</a></li>
+        </ul>
+
+        <div class="social-icons">
+            <a href="mailto:karinazhang0518@outlook.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://github.com/Caelum518" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+
+        <!-- About Me -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                I am an incoming Master's student in <a href="https://www.cds.hku.hk/" target="_blank">Data Science</a> at <strong>The University of Hong Kong (HKU)</strong>, School of Computing and Data Science, starting Fall 2026.
+            </p>
+            <p>
+                My research interests lie in <strong>Multimodal Agents</strong>, <strong>Reinforcement Learning for LLM Agents</strong>, and <strong>GUI Agents</strong>. I am particularly interested in training agents that make multi-step decisions in complex environments, and in understanding and mitigating reward hacking phenomena during agent RL training.
+            </p>
+            <p>
+                Previously, I was a research intern at <strong>Li Auto (理想汽车)</strong> Foundation Model team, where I independently led the full Reasoning RL pipeline — from building the RL-trained teacher model through multi-domain reinforcement learning, to distilling its capabilities into downstream multimodal on-device planning systems. Before that, I completed my B.E. at <a href="https://www.xidian.edu.cn/" target="_blank">Xidian University</a> with an Outstanding Thesis distinction.
+            </p>
+            <div class="highlight-box">
+                🎓 <strong>I am looking for PhD positions starting Fall 2027/2028</strong> in Agent RL, Multimodal Agents, or GUI Agents. Feel free to reach out if you have openings or would like to collaborate!
+            </div>
+        </section>
+
+        <!-- News -->
+        <section id="news">
+            <h2>🔥 News</h2>
+            <ul class="news-list">
+                <li><span class="news-date">2026.09</span> Starting M.S. in Data Science at HKU School of Computing and Data Science.</li>
+                <li><span class="news-date">2026.07</span> Graduated from Xidian University. Thesis rated "Outstanding" (highest level); candidate for University-level Outstanding Thesis Award.</li>
+                <li><span class="news-date">2026.03</span> Joined Li Auto Foundation Model team as research intern, working on Reasoning RL and multimodal agent systems.</li>
+                <li><span class="news-date">2024.04</span> Awarded Meritorious Winner in MCM/ICM 2024 (Team #2429459).</li>
+            </ul>
+        </section>
+
+        <!-- Research Experience -->
+        <section id="research">
+            <h2>🔬 Research Experience</h2>
+
+            <!-- Li Auto -->
+            <div class="research-group-header">
+                <h3>Li Auto · Foundation Model Team</h3>
+                <div class="subtitle">Research Intern · Mar 2026 – Sep 2026</div>
+            </div>
+
+            <div class="storyline">
+                <div class="sl-title">Storyline: From RL-Trained Teacher to On-Device Multimodal Agent</div>
+                <div class="sl-text">
+                    Starting from an SFT-aligned base model, I independently led multi-domain Reasoning RL training to produce a strong-capability teacher model (35B achieving 122B-level performance). This teacher model serves as the knowledge source for <strong>MoPD</strong> (Multimodal On-device Planning via Distillation), which distills its reasoning and tool-use capabilities into lightweight on-device planning agents. In parallel, I explored Training-Free model merging as a complementary path and built the reward infrastructure (code execution rewards, hacking detection) that ensures RL training quality throughout.
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">Multi-Domain Reasoning RL Training → Teacher Model for MoPD Distillation</div>
+                <div class="desc">
+                    Independently led the Reasoning RL training pipeline for 35B and 122B MoE models. Conducted sequential multi-domain RL (instruction-following → code → math) starting from a post-SFT checkpoint. On 35B, achieved <strong>Math +3PP, Code +6PP, IF +1PP, Tau2 +2PP, SWE +1PP</strong>, with multiple metrics reaching or exceeding the 122B baseline. Performed systematic data composition ablations to determine optimal training schedules. The resulting teacher model serves as the upstream capability source for MoPD multimodal planning distillation.
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">Reward Hacking Detection & Mitigation for RL Training</div>
+                <div class="desc">
+                    Identified reward hacking through trajectory-level case analysis during IF-domain RL training. Designed an LLM-as-judge verification mechanism and automated quality audit pipeline distinguishing genuine capability gains from format-gaming behaviors. Quantified hacking rates across model scales (<strong>35B: 58.2%</strong>), providing data-informed decisions on reward shaping and early-stopping criteria to ensure RL training converges to real capability rather than surface-level reward exploitation.
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">Code RL Reward System — Sandbox-Based Execution Pipeline</div>
+                <div class="desc">
+                    Reproduced and adapted the XCoder code reward system for internal Code RL training. Implemented a full sandbox-based execution reward pipeline: AST compilation check → dual-verification test generation → batch sandboxed evaluation, combined with format reward scoring. Supports GRPO-based Code RL on 35B/122B models with configurable multi-dimensional reward composition.
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">Training-Free MoE Model Merging (Complementary Path to RL)</div>
+                <div class="desc">
+                    As a complementary approach to RL training, explored training-free merging for 35B-A3B MoE models. Proposed <strong>cosine-alignment + Hungarian optimal matching</strong> for expert pairing, with independent retention and interpolation fusion for Attention layers. Validated end-to-end on IFEval, LiveCodeBench, AIME 2026. Conducted systematic comparison with the RL path to quantify capability gains and forgetting across both approaches, informing the team's final multi-capability fusion strategy.
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">MoPD: Multimodal On-Device Planning — SFT Data Production</div>
+                <div class="desc">
+                    Responsible for SFT training data production for the downstream MoPD on-device planning model. Built end-to-end data construction pipeline for visual search scenarios: LLM-driven augmentation generating high-quality spoken queries with tool-call annotations, integrated TTS synthesis, and automated quality validation. Delivered 2K+ end-to-end trainable samples per batch, enabling the distilled model to expand capabilities on new interaction scenarios.
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">Evaluation Infrastructure & Team RL Documentation</div>
+                <div class="meta">Supporting infrastructure across the full pipeline</div>
+                <div class="desc">
+                    Built reusable checkpoint-level evaluation covering IFEval, IFBench, BFCL, Tau2, SWE-Bench, LiveCodeBench, AIME 2026, and LongBench-v2. Authored team-wide RL operational guide (verl + Ray multi-node deployment, sglang serving for MoE, GRPO configuration, reward construction, OOM diagnosis).
+                </div>
+            </div>
+
+            <!-- Xidian Thesis -->
+            <div class="research-group-header">
+                <h3>Xidian University · Undergraduate Thesis</h3>
+                <div class="subtitle">Research Assistant · Nov 2025 – May 2026 · Thesis rated "Outstanding" (highest level)</div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">Modality Quality Reliability Calibration for Multi-Modal Tracking (MQRC)</div>
+                <div class="desc">
+                    Diagnosed systematic overconfidence in FMTrack multi-expert fusion reliability prediction, caused by end-to-end training coupling with localization loss. Proposed <strong>MQRC</strong> — a lightweight module with only <strong>284 trainable parameters</strong> — performing per-expert temperature scaling and residual MLP projection on reshaped 32-dim logits, injected via forward hooks into the frozen 286M-parameter model. Achieved <strong>+2.5% MPR / +1.7% MSR on RGBT234</strong>, <strong>+0.3% SR on LasHeR</strong>, <strong>+0.9% MSR on RGBT210</strong>.
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">Synthetic Degradation Contrastive Alignment for Calibration</div>
+                <div class="desc">
+                    Addressed the fundamental challenge that per-frame modality quality annotations are unavailable. Designed a synthetic degradation contrastive alignment mechanism decoupled from the tracking objective. Constructed 7 programmatic degradation types (RGB: random occlusion, Gaussian noise, low-light compression, motion blur; TIR: contrast compression, stripe noise, pixel dropout) to generate quality-ordered triplets, optimized with margin ranking loss and modality-independent gradient paths.
+                </div>
+                <div class="links-row">
+                    <a href="thesis.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Thesis PDF</a>
+                </div>
+            </div>
+
+            <div class="figure-container">
+                <img src="mindmap.png" alt="MQRC Architecture: Independent Temperature Scaling → Projection Head (MLP + Residual)">
+                <div class="caption">Fig. MQRC Architecture: Independent Temperature Scaling → Projection Head (MLP + Residual)</div>
+            </div>
+
+            <!-- Xidian Adversarial -->
+            <div class="research-group-header">
+                <h3>Xidian University · Adversarial Robustness Research</h3>
+                <div class="subtitle">Research Assistant & Project Lead · Dec 2023 – Jun 2024</div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">Background Adversarial Attack for Object Detection</div>
+                <div class="desc">
+                    Developed a novel background adversarial attack method enhancing adversarial sample generation for improved model robustness. Designed a targeted covert attack framework for object detection systems that outperforms existing baselines. Fabricated PCB boards for physical-domain experiments, validating digital-to-physical consistency of adversarial patches under real-world conditions. Led student research team, converting results into National Innovation Project (rated <strong>top 7%</strong>).
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications / Competition Papers -->
+        <section id="publications">
+            <h2>📝 Publications & Competition Papers</h2>
+
+            <div class="research-item">
+                <div class="title">Modeling Momentum Dynamics in Tennis: A Data-Driven Approach Using Weighted LSTM and Markov Chain Analysis</div>
+                <div class="meta">MCM/ICM 2024 · Team #2429459 · <strong>Meritorious Winner (一等奖)</strong></div>
+                <div class="desc">
+                    Developed a comprehensive framework for quantifying "momentum" in competitive tennis. Key technical contributions:
+                    <br>① <strong>Player Momentum Capture Model</strong>: Defined composite momentum indicators from real-time match statistics (serve speed, break points, unforced errors) and visualized momentum-score dynamics across sets.
+                    <br>② <strong>Weighted LSTM Network</strong>: Designed a temporal neural network with attention-weighted inputs to predict point-level momentum state transitions, achieving <strong>95.02% prediction accuracy</strong> on Wimbledon 2023 data.
+                    <br>③ <strong>Markov Chain Volatility Model</strong>: Built a stochastic model capturing momentum shifts as state transitions, combined with multivariate nonlinear regression for fluctuation prediction. Validated statistical significance via Monte Carlo simulation.
+                    <br>④ <strong>Generalization</strong>: Extended the framework to badminton and table tennis, achieving &gt;85% prediction accuracy across different sports, confirming the model's domain-transfer capability.
+                </div>
+                <div class="links-row">
+                    <a href="mcm_paper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section id="education">
+            <h2>📖 Education</h2>
+            <div class="edu-item">
+                <div class="edu-icon"><i class="fas fa-university"></i></div>
+                <div class="edu-info">
+                    <h4>The University of Hong Kong</h4>
+                    <p>M.S. in Data Science, School of Computing and Data Science</p>
+                    <p style="color:#999; font-size:0.8rem;">Sep 2026 – Jun 2028 (expected)</p>
+                </div>
+            </div>
+            <div class="edu-item">
+                <div class="edu-icon"><i class="fas fa-university"></i></div>
+                <div class="edu-info">
+                    <h4>Xidian University</h4>
+                    <p>B.E. in Electronic Information Engineering</p>
+                    <p style="color:#999; font-size:0.8rem;">Sep 2022 – Jul 2026 · Top 15% · Multiple Scholarships</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Honors -->
+        <section id="honors">
+            <h2>🎖 Selected Honors & Awards</h2>
+            <ul class="honors-list">
+                <li><span class="year">2026</span> Outstanding Thesis Award Candidate, Xidian University</li>
+                <li><span class="year">2024</span> Meritorious Winner (一等奖), Mathematical Contest in Modeling (MCM/ICM)</li>
+                <li><span class="year">2023</span> First Prize (赛区一等奖), China Undergraduate Mathematical Contest in Modeling (CUMCM)</li>
+                <li><span class="year">2025</span> National Innovation & Entrepreneurship Training Project Leader (rated Excellent, top 7%)</li>
+                <li><span class="year">2024</span> Outstanding Student Award, Xidian University</li>
+                <li><span class="year">—</span> IELTS 8.0 (R: 9.0, L: 9.0, S: 7.0, W: 6.5) · CET-6: 666/710</li>
+            </ul>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills">
+            <h2>🛠 Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-tag">Python · C/C++ · MATLAB · LaTeX</div>
+                <div class="skill-tag">PyTorch · verl · Ray · sglang</div>
+                <div class="skill-tag">RL Training (GRPO, PPO) · Reward Engineering</div>
+                <div class="skill-tag">LLM Post-Training & Evaluation</div>
+                <div class="skill-tag">Computer Vision · Multi-Modal Tracking</div>
+                <div class="skill-tag">Agent Systems · Tool-Use · Data Pipelines</div>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<footer>
+    <p>© 2026 Motong Zhang · Last updated: Jul 2026</p>
+</footer>
+
+</body>
+</html>
