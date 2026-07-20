@@ -219,12 +219,10 @@
             <li><i class="fas fa-map-marker-alt"></i> Hong Kong, China</li>
             <li><i class="fas fa-envelope"></i> <a href="mailto:karinazhang0518@outlook.com">Email</a></li>
             <li><i class="fab fa-github"></i> <a href="https://github.com/Caelum518" target="_blank">GitHub</a></li>
+            <li><i class="fas fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar</a></li>
         </ul>
 
-        <div class="social-icons">
-            <a href="mailto:karinazhang0518@outlook.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://github.com/Caelum518" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        </div>
+
     </aside>
 
     <!-- Main Content -->
@@ -252,6 +250,7 @@
             <h2>🔥 News</h2>
             <ul class="news-list">
                 <li><span class="news-date">2026.09</span> Starting M.S. in Data Science at HKU School of Computing and Data Science.</li>
+                <li><span class="news-date">2026.07</span> <a href="https://arxiv.org/abs/2607.09375" target="_blank">Mach-Mind-4-Flash Technical Report</a> released on arXiv.</li>
                 <li><span class="news-date">2026.07</span> Graduated from Xidian University. Thesis rated "Outstanding" (highest level); candidate for University-level Outstanding Thesis Award.</li>
                 <li><span class="news-date">2026.03</span> Joined Li Auto Foundation Model team as research intern, working on Reasoning RL and multimodal agent systems.</li>
                 <li><span class="news-date">2024.04</span> Awarded Meritorious Winner in MCM/ICM 2024 (Team #2429459).</li>
@@ -293,6 +292,13 @@
                 <div class="title">Code RL Reward System — Sandbox-Based Execution Pipeline</div>
                 <div class="desc">
                     Reproduced and adapted the XCoder code reward system for internal Code RL training. Implemented a full sandbox-based execution reward pipeline: AST compilation check → dual-verification test generation → batch sandboxed evaluation, combined with format reward scoring. Supports GRPO-based Code RL on 35B/122B models with configurable multi-dimensional reward composition.
+                </div>
+            </div>
+
+            <div class="research-item">
+                <div class="title">SWE Code Agent — Large-Scale Training Data Construction</div>
+                <div class="desc">
+                    Independently led large-scale training data construction for SWE code agents. Surveyed 10+ open-source Code Agent datasets and performed cross-dataset comparative analysis on quality distribution, model behavioral tendencies, and problem-solving efficiency. Selected and integrated 6 optimal benchmarks covering 30K+ Issues and 100K+ Trajectories. Designed an automated quality filtering pipeline combining rule engines with LLM-based joint review, systematically eliminating low-quality and reward-hacking samples to produce high-confidence training data delivered to downstream teams for production use.
                 </div>
             </div>
 
@@ -358,11 +364,27 @@
                     Developed a novel background adversarial attack method enhancing adversarial sample generation for improved model robustness. Designed a targeted covert attack framework for object detection systems that outperforms existing baselines. Fabricated PCB boards for physical-domain experiments, validating digital-to-physical consistency of adversarial patches under real-world conditions. Led student research team, converting results into National Innovation Project (rated <strong>top 7%</strong>).
                 </div>
             </div>
+
+            <div class="figure-container">
+                <img src="dexian.jpg" alt="Adversarial Attack Physical Experiment">
+                <div class="caption">Fig. Physical-domain adversarial patch experiment on PCB board</div>
+            </div>
         </section>
 
         <!-- Publications / Competition Papers -->
         <section id="publications">
             <h2>📝 Publications & Competition Papers</h2>
+
+            <div class="research-item">
+                <div class="title">Mach-Mind-4-Flash Technical Report</div>
+                <div class="meta">arXiv 2607.09375 · Jul 2026 · Li Auto Foundation Model Team</div>
+                <div class="desc">
+                    Technical report for the Mach-Mind-4-Flash model. Contributed to the Reasoning RL training pipeline, multi-domain reinforcement learning, and evaluation infrastructure that enabled 35B models to achieve 122B-level performance across multiple benchmarks.
+                </div>
+                <div class="links-row">
+                    <a href="https://arxiv.org/abs/2607.09375" target="_blank"><i class="fas fa-file-pdf"></i> arXiv</a>
+                </div>
+            </div>
 
             <div class="research-item">
                 <div class="title">Modeling Momentum Dynamics in Tennis: A Data-Driven Approach Using Weighted LSTM and Markov Chain Analysis</div>
@@ -378,6 +400,14 @@
                     <a href="mcm_paper.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Paper PDF</a>
                 </div>
             </div>
+            <div class="research-item">
+                <div class="title">Optimal Crop Allocation via Linear Programming under Multi-Constraint Agricultural Planning</div>
+                <div class="meta">CUMCM 2023 · <strong>First Prize (赛区一等奖)</strong></div>
+                <div class="desc">
+                    Developed a linear programming-based crop allocation model maximizing total net profit for farmland under multiple real-world constraints. Preprocessed 41 crop types into 7 categories by planting conditions, then formulated an optimization model incorporating area limits, demand thresholds, and co-planting constraints. Introduced stochastic and environmental variables to represent real-world uncertainty, applying adaptive gradient algorithms to boost expected profit to <strong>129.23%</strong> of the 2023 baseline. Further optimized inter-crop relationships via ridge regression, hierarchical clustering, and entropy-weighted TOPSIS, improving profit by ~5%. Validated model robustness through sensitivity analysis and simulated annealing, confirming practical applicability for agricultural planning.
+                </div>
+            </div>
+
         </section>
 
         <!-- Education -->
@@ -406,10 +436,15 @@
             <h2>🎖 Selected Honors & Awards</h2>
             <ul class="honors-list">
                 <li><span class="year">2026</span> Outstanding Thesis Award Candidate, Xidian University</li>
-                <li><span class="year">2024</span> Meritorious Winner (一等奖), Mathematical Contest in Modeling (MCM/ICM)</li>
-                <li><span class="year">2023</span> First Prize (赛区一等奖), China Undergraduate Mathematical Contest in Modeling (CUMCM)</li>
                 <li><span class="year">2025</span> National Innovation & Entrepreneurship Training Project Leader (rated Excellent, top 7%)</li>
+                <li><span class="year">2025</span> Third Prize, Chinese Mathematics Competitions (Provincial)</li>
+                <li><span class="year">2025</span> "De-Xian" Science & Technology Innovation Project Leader (completed)</li>
+                <li><span class="year">2024</span> Meritorious Winner (一等奖), Mathematical Contest in Modeling (MCM/ICM)</li>
                 <li><span class="year">2024</span> Outstanding Student Award, Xidian University</li>
+                <li><span class="year">2024</span> Bronze Award, China International College Students' Innovation Competition (University level)</li>
+                <li><span class="year">2024</span> Second Prize, 35th "Spark Cup" Academic Science & Technology Competition</li>
+                <li><span class="year">2023</span> First Prize (赛区一等奖), China Undergraduate Mathematical Contest in Modeling (CUMCM)</li>
+                <li><span class="year">2023</span> Second Prize, 34th "Spark Cup" Academic Science & Technology Competition</li>
                 <li><span class="year">—</span> IELTS 8.0 (R: 9.0, L: 9.0, S: 7.0, W: 6.5) · CET-6: 666/710</li>
             </ul>
         </section>
