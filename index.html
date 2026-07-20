@@ -232,16 +232,16 @@
         <section id="about">
             <h2>About Me</h2>
             <p>
-                I am an incoming Master's student in <a href="https://mdasc.cds.hku.hk/" target="_blank">Data Science</a> at <strong>The University of Hong Kong (HKU)</strong>, School of Computing and Data Science, starting Fall 2026.
+                I am an incoming <a href="https://mdasc.cds.hku.hk/" target="_blank">Master of Data Science</a> student at <strong>The University of Hong Kong (HKU)</strong>, School of Computing and Data Science, starting Fall 2026.
             </p>
             <p>
-                My research interests lie in <strong>Multimodal Learning</strong>, <strong>Reinforcement Learning</strong>, and <strong>Embodied AI</strong>. I believe that as AI advances, the current interaction paradigm, where humans communicate with systems through typing or voice commands, represents only a narrow application of intelligence. A natural next step is enabling AI to directly operate software and digital tools on behalf of humans, which itself holds substantial value in augmenting productivity. However, intelligence should not remain confined to screens. The ultimate goal is to ground algorithms in the physical world, enabling autonomous perception, reasoning, and action in real environments. In such environments, language and vision are merely subsets of the available sensory information, and true real-world intelligence demands simultaneous processing and reasoning across diverse modalities. Current VLM and VLA approaches are likely transitional stages toward more general multimodal integration. My goal is to transform multimodal perception and reasoning into executable decisions, progressing naturally from software control in digital environments to physical-world interaction as the multimodal foundation matures.
+                My research interests lie in <strong>Multimodal Learning</strong>, <strong>Reinforcement Learning</strong>, and <strong>Embodied AI</strong>. I want to build models that act on the world, not just describe it, and reinforcement learning is how they learn to. Training RL agents at <strong>Li Auto (理想汽车)</strong> convinced me that the real bottleneck usually isn't compute but verifiable reward: RL only becomes genuine capability when the reward signal is trustworthy. That is the thread I want to keep pulling, from computer-use agents, where digital environments give scalable and checkable reward, all the way to physical-world grounding, where the same problem gets much harder and much more worth solving.
             </p>
             <p>
-                Previously, I was a research intern at <strong>Li Auto (理想汽车)</strong> Foundation Model team, where I independently led the full Reasoning RL pipeline — from building the RL-trained teacher model through multi-domain reinforcement learning, to distilling its capabilities into downstream multimodal on-device planning systems. Before that, I completed my B.E. at <a href="https://see.xidian.edu.cn/" target="_blank">Xidian University</a> with an Outstanding Thesis distinction（24/580).
+                At <strong>Li Auto</strong>'s Foundation Model team, I worked on the post-training of a 35B (3B-activated) MoE model, owning the reinforcement learning for two domains (instruction-following and code generation) and building the reward infrastructure underneath them (sandbox code-execution rewards, reward-hacking detection). More recently our team has moved into <strong>embodied intelligence</strong>, and I joined the perception and OCR data track, where I am currently helping build the data and training infrastructure. Before Li Auto, I completed my B.E. at <a href="https://see.xidian.edu.cn/" target="_blank">Xidian University</a> with an Outstanding Thesis distinction (24/580), working on multimodal (RGB-T) tracking and physical-domain adversarial robustness.
             </p>
             <div class="highlight-box">
-                🎓 <strong>I am looking for PhD positions starting Fall/Spring 2028</strong> in Multimodal Learning, Reinforcement Learning, or Embodied AI. I am also actively seeking research internship opportunities right now. Hope to have the opportunity to collaborate with you!
+                🎯 <strong>I am actively seeking research internships</strong> in Reinforcement Learning for agents, Multimodal Learning, and Embodied AI, available immediately. Longer term, I aim to pursue a PhD in these directions. I'd love the opportunity to collaborate!
             </div>
         </section>
 
@@ -249,7 +249,7 @@
         <section id="news">
             <h2>🔥 News</h2>
             <ul class="news-list">
-                <li><span class="news-date">2026.09</span> Starting Master in Data Science at HKU School of Computing and Data Science.</li>
+                <li><span class="news-date">2026.09</span> Starting the Master of Data Science program at HKU, School of Computing and Data Science.</li>
                 <li><span class="news-date">2026.07</span> Our work during my internship at Li Auto Inc. <a href="https://arxiv.org/abs/2607.09375" target="_blank">Mach-Mind-4-Flash Technical Report</a> released on arXiv.</li>
                 <li><span class="news-date">2026.07</span> Graduated from Xidian University. Thesis rated "Outstanding" (highest level); candidate for University-level Outstanding Thesis Award.</li>
                 <li><span class="news-date">2026.03</span> Joined Li Auto Foundation Model team as research intern, working on Reasoning RL and multimodal model training.</li>
@@ -270,30 +270,30 @@
             </div>
 
             <div class="storyline">
-                <div class="sl-title">Storyline: From RL-Trained Teacher to On-Device Multimodal Agent</div>
+                <div class="sl-title">Overview: My Contributions to Mach-Mind-4-Flash Post-Training</div>
                 <div class="sl-text">
-                    Starting from an SFT-aligned base model, I independently led multi-domain Reasoning RL training to produce a strong-capability teacher model (35B achieving 122B-level performance). This teacher model serves as the knowledge source for <strong>MoPD</strong> (Multimodal On-device Planning via Distillation), which distills its reasoning and tool-use capabilities into lightweight on-device planning agents. In parallel, I explored Training-Free model merging as a complementary path and built the reward infrastructure (code execution rewards, hacking detection) that ensures RL training quality throughout.
+                    Mach-Mind-4-Flash was a team effort; within it I owned the reinforcement learning for two domains, instruction-following and code generation. My focus was a question I kept coming back to: how to make RL turn compute into genuine capability instead of reward exploitation. On the code side I built a sandbox-based execution reward system for verifiable signal; on the instruction-following side I diagnosed reward hacking through trajectory-level analysis and replaced the rule-based reward with an LLM-as-judge verification pipeline, which cut the reward-hacking rate by 34.4% relative and held it below the base model's own level for the rest of training. I also explored training-free MoE merging as a complementary capability-fusion path. These pieces fed into the team's broader model, which my teammates carried into the downstream MoPD on-device planning agent. More recently our team moved into embodied intelligence, and I joined its perception and OCR data track, currently building out the data and training infrastructure.
                 </div>
             </div>
 
             <div class="research-item">
-                <div class="title">Multi-Domain Reasoning RL Training → Teacher Model for MoPD Distillation</div>
+                <div class="title">Domain RL for Instruction-Following &amp; Code Generation (Mach-Mind-4-Flash)</div>
                 <div class="desc">
-                    Independently led the Reasoning RL training pipeline for 35B and 122B MoE models. Conducted sequential multi-domain RL (instruction-following → code → math) starting from a post-SFT checkpoint. On 35B, achieved <strong>Math +3PP, Code +6PP, IF +1PP, Tau2 +2PP, SWE +1PP</strong>, with multiple metrics reaching or exceeding the 122B baseline. Performed systematic data composition ablations to determine optimal training schedules. The resulting teacher model serves as the upstream capability source for MoPD multimodal planning distillation.
+                    Within the team's post-training pipeline for a 35B (3B-activated) MoE model, I was responsible for the reinforcement learning of two domains: instruction-following and code generation. Starting from a post-SFT checkpoint, I ran domain RL with systematic data-composition ablations to find stable training schedules, and studied how sequencing and data mix affect capability retention. My contributions fed into the broader model reported in the Mach-Mind-4-Flash technical report, which reached performance on par with, and on several tasks surpassing, 100B-parameter-class models through post-training alone.
                 </div>
             </div>
 
             <div class="research-item">
                 <div class="title">Reward Hacking Detection & Mitigation for RL Training</div>
                 <div class="desc">
-                    Identified reward hacking through trajectory-level case analysis during IF-domain RL training. Designed an LLM-as-judge verification mechanism and automated quality audit pipeline distinguishing genuine capability gains from format-gaming behaviors. Quantified hacking rates across model scales (<strong>35B: 58.2%</strong>), providing data-informed decisions on reward shaping and early-stopping criteria to ensure RL training converges to real capability rather than surface-level reward exploitation.
+                    Identified reward hacking through trajectory-level case analysis during instruction-following RL training, where a rule-based reward was being gamed by format-level exploits. Designed an LLM-as-judge verification mechanism and automated audit pipeline to separate genuine capability gains from format-gaming. Replacing the rule-based reward with this pipeline reduced the reward-hacking rate by <strong>34.4% relative</strong>, and past the early training phase it stabilized below the base model's own hacking level, giving reliable signal for reward-shaping and early-stopping decisions.
                 </div>
             </div>
 
             <div class="research-item">
                 <div class="title">Code RL Reward System — Sandbox-Based Execution Pipeline</div>
                 <div class="desc">
-                    Reproduced and adapted the XCoder code reward system for internal Code RL training. Implemented a full sandbox-based execution reward pipeline: AST compilation check → dual-verification test generation → batch sandboxed evaluation, combined with format reward scoring. Supports GRPO-based Code RL on 35B/122B models with configurable multi-dimensional reward composition.
+                    Reproduced and adapted the XCoder code reward system for internal Code RL training. Implemented a full sandbox-based execution reward pipeline: AST compilation check → dual-verification test generation → batch sandboxed evaluation, combined with format reward scoring. Supports GRPO-based Code RL on large MoE models with configurable multi-dimensional reward composition.
                 </div>
             </div>
 
@@ -314,7 +314,7 @@
             <div class="research-item">
                 <div class="title">MoPD: Multimodal On-Device Planning — SFT Data Production</div>
                 <div class="desc">
-                    Responsible for SFT training data production for the downstream MoPD on-device planning model. Built end-to-end data construction pipeline for visual search scenarios: LLM-driven augmentation generating high-quality spoken queries with tool-call annotations, integrated TTS synthesis, and automated quality validation. Delivered 2K+ end-to-end trainable samples per batch, enabling the distilled model to expand capabilities on new interaction scenarios.
+                    Responsible for SFT training data production for the downstream MoPD on-device planning model. Built an end-to-end data construction pipeline for visual-search interaction scenarios: LLM-driven augmentation generating high-quality spoken queries, integrated TTS synthesis, and automated quality validation. Delivered 2K+ end-to-end trainable samples per batch, enabling the distilled model to expand capabilities on new interaction scenarios.
                 </div>
             </div>
 
@@ -335,7 +335,7 @@
             <div class="research-item">
                 <div class="title">Modality Quality Reliability Calibration for Multi-Modal Tracking (MQRC)</div>
                 <div class="desc">
-                    Diagnosed systematic overconfidence in FMTrack multi-expert fusion reliability prediction, caused by end-to-end training coupling with localization loss. Proposed <strong>MQRC</strong> — a lightweight module with only <strong>284 trainable parameters</strong> — performing per-expert temperature scaling and residual MLP projection on reshaped 32-dim logits, injected via forward hooks into the frozen 286M-parameter model. Achieved <strong>+2.5% MPR / +1.7% MSR on RGBT234</strong>, <strong>+0.3% SR on LasHeR</strong>, <strong>+0.9% MSR on RGBT210</strong>.
+                    Diagnosed systematic overconfidence in FMTrack multi-expert fusion reliability prediction, caused by end-to-end training coupling with localization loss. Proposed <strong>MQRC</strong>, a lightweight module with only <strong>284 trainable parameters</strong> that performs per-expert temperature scaling and residual MLP projection on reshaped 32-dim logits, injected via forward hooks into the frozen 286M-parameter model. Achieved <strong>+2.5% MPR / +1.7% MSR on RGBT234</strong>, <strong>+0.3% SR on LasHeR</strong>, <strong>+0.9% MSR on RGBT210</strong>.
                 </div>
             </div>
 
@@ -375,18 +375,20 @@
 
         <!-- Publications / Competition Papers -->
         <section id="publications">
-            <h2>📝 Publications & Competition Papers</h2>
+            <h2>📝 Preprints & Technical Reports</h2>
 
             <div class="research-item">
                 <div class="title">Mach-Mind-4-Flash Technical Report</div>
                 <div class="meta">arXiv 2607.09375 · Jul 2026 · Li Auto Foundation Model Team</div>
                 <div class="desc">
-                    Technical report for the Mach-Mind-4-Flash model. Contributed to the Reasoning RL training pipeline, multi-domain reinforcement learning, and evaluation infrastructure that enabled 35B models to achieve 122B-level performance across multiple benchmarks.
+                    Technical report for the Mach-Mind-4-Flash model, a 35B (3B-activated) MoE agentic model. Contributed to the Reasoning RL training pipeline, multi-domain reinforcement learning, and evaluation infrastructure that helped the model reach performance on par with, and on several tasks surpassing, 100B-parameter-class models through post-training alone.
                 </div>
                 <div class="links-row">
                     <a href="https://arxiv.org/abs/2607.09375" target="_blank"><i class="fas fa-file-pdf"></i> arXiv</a>
                 </div>
             </div>
+
+            <h2 style="margin-top:32px;">🏅 Selected Competition Papers</h2>
 
             <div class="research-item">
                 <div class="title">Modeling Momentum Dynamics in Tennis: A Data-Driven Approach Using Weighted LSTM and Markov Chain Analysis</div>
@@ -419,7 +421,7 @@
                 <div class="edu-icon"><i class="fas fa-university"></i></div>
                 <div class="edu-info">
                     <h4>The University of Hong Kong</h4>
-                    <p>M.S. in Data Science, School of Computing and Data Science</p>
+                    <p>Master of Data Science, School of Computing and Data Science</p>
                     <p style="color:#999; font-size:0.8rem;">Sep 2026 – Jun 2028 (expected)</p>
                 </div>
             </div>
@@ -437,14 +439,18 @@
         <section id="honors">
             <h2>🎖 Selected Honors & Awards</h2>
             <ul class="honors-list">
+                <li><span class="year">2026</span> Overseas Study Scholarship, Xidian University</li>
                 <li><span class="year">2026</span> Outstanding Thesis Award Candidate, Xidian University</li>
                 <li><span class="year">2025</span> National Innovation & Entrepreneurship Training Project Leader (rated Excellent, top 7%)</li>
                 <li><span class="year">2025</span> Third Prize, Chinese Mathematics Competitions (Provincial)</li>
                 <li><span class="year">2025</span> "De-Xian" Science & Technology Innovation Project Leader (completed)</li>
+                <li><span class="year">2024</span> University Second-Class Scholarship, Xidian University</li>
+                <li><span class="year">2024</span> Linkidge Capital Social Scholarship</li>
                 <li><span class="year">2024</span> Meritorious Winner (一等奖), Mathematical Contest in Modeling (MCM/ICM)</li>
                 <li><span class="year">2024</span> Outstanding Student Award, Xidian University</li>
                 <li><span class="year">2024</span> Bronze Award, China International College Students' Innovation Competition (University level)</li>
                 <li><span class="year">2024</span> Second Prize, 35th "Spark Cup" Academic Science & Technology Competition</li>
+                <li><span class="year">2023</span> Merit-based Individual Scholarship, Xidian University</li>
                 <li><span class="year">2023</span> First Prize (赛区一等奖), China Undergraduate Mathematical Contest in Modeling (CUMCM)</li>
                 <li><span class="year">2023</span> Second Prize, 34th "Spark Cup" Academic Science & Technology Competition</li>
                 <li><span class="year">—</span> IELTS 8.0 (R: 9.0, L: 9.0, S: 7.0, W: 6.5) · CET-6: 666/710</li>
@@ -460,7 +466,7 @@
                 <div class="skill-tag">RL Training (GRPO, PPO) · Reward Engineering</div>
                 <div class="skill-tag">LLM Post-Training & Evaluation</div>
                 <div class="skill-tag">Computer Vision · Multi-Modal Tracking</div>
-                <div class="skill-tag">Agent Systems · Tool-Use · Data Pipelines</div>
+                <div class="skill-tag">LLM/Agent Post-Training · Data Pipelines</div>
             </div>
         </section>
 
