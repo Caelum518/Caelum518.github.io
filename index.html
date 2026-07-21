@@ -252,7 +252,7 @@
                 <li><span class="news-date">2026.09</span> Starting the Master of Data Science program at HKU, School of Computing and Data Science.</li>
                 <li><span class="news-date">2026.07</span> Our work during my internship at Li Auto Inc. <a href="https://arxiv.org/abs/2607.09375" target="_blank">Mach-Mind-4-Flash Technical Report</a> released on arXiv.</li>
                 <li><span class="news-date">2026.07</span> Graduated from Xidian University. Thesis rated "Outstanding" (highest level, Top 4%).</li>
-                <li><span class="news-date">2026.03</span> Joined Li Auto Foundation Model team as research intern, working on Reasoning RL and multimodal model training.</li>
+                <li><span class="news-date">2026.03</span> Joined Li Auto Foundation Model team as research intern, working on RL post-training (instruction-following &amp; code generation) and reward infrastructure.</li>
                 <li><span class="news-date">2025.05</span> National Innovation & Entrepreneurship Training Project completed as project leader (Top 7% among all).</li>
                 <li><span class="news-date">2024.04</span> Awarded Meritorious Winner in MCM/ICM 2024 (Team #2429459).</li>
                 <li><span class="news-date">2023.11</span> First Prize in China Undergraduate Mathematical Contest in Modeling (CUMCM).</li>
@@ -272,7 +272,7 @@
             <div class="storyline">
                 <div class="sl-title">Overview: My Contributions to Mach-Mind-4-Flash Post-Training</div>
                 <div class="sl-text">
-                    Mach-Mind-4-Flash was a team effort; within it I owned the reinforcement learning for two domains, instruction-following and code generation. My focus was a question I kept coming back to: how to make RL turn compute into genuine capability instead of reward exploitation. On the code side I built a sandbox-based execution reward system for verifiable signal; on the instruction-following side I diagnosed reward hacking through trajectory-level analysis and replaced the rule-based reward with an LLM-as-judge verification pipeline, which cut the reward-hacking rate by 34.4% relative and held it below the base model's own level for the rest of training. I also explored training-free MoE merging as a complementary capability-fusion path. These pieces fed into the team's broader model, which my teammates carried into the downstream MoPD on-device planning agent. More recently our team moved into embodied intelligence, and I joined its perception and OCR data track, currently building out the data and training infrastructure.
+                    Mach-Mind-4-Flash was a team effort; within it I owned the reinforcement learning for two domains, instruction-following and code generation. My focus was a question I kept coming back to: how to make RL turn compute into genuine capability instead of reward exploitation, which led me into reward design, reward-hacking analysis, and the training data behind it. These pieces fed into the team's broader model, which my teammates carried into the downstream MoPD on-device planning agent. More recently our team moved into embodied intelligence, and I joined its perception and OCR data track, currently building out the data and training infrastructure.
                 </div>
             </div>
 
@@ -291,13 +291,6 @@
             </div>
 
             <div class="research-item">
-                <div class="title">Code RL Reward System — Sandbox-Based Execution Pipeline</div>
-                <div class="desc">
-                    Reproduced and adapted the XCoder code reward system for internal Code RL training. Implemented a full sandbox-based execution reward pipeline: AST compilation check → dual-verification test generation → batch sandboxed evaluation, combined with format reward scoring. Supports GRPO-based Code RL on large MoE models with configurable multi-dimensional reward composition.
-                </div>
-            </div>
-
-            <div class="research-item">
                 <div class="title">SWE Code Agent — Large-Scale Training Data Construction</div>
                 <div class="desc">
                     Independently led large-scale training data construction for SWE code agents. Surveyed 10+ open-source Code Agent datasets and performed cross-dataset comparative analysis on quality distribution, model behavioral tendencies, and problem-solving efficiency. Selected and integrated 6 optimal benchmarks covering 30K+ Issues and 100K+ Trajectories. Designed an automated quality filtering pipeline combining rule engines with LLM-based joint review, systematically eliminating low-quality and reward-hacking samples to produce high-confidence training data delivered to downstream teams for production use.
@@ -312,6 +305,13 @@
             </div>
 
             <div class="research-item">
+                <div class="title">Stability Training-Data Construction from Real In-Car Interactions</div>
+                <div class="desc">
+                    To target real failure modes of the in-car agent (e.g. hallucinated tool calls, where the model claims success without actually invoking a function), I mined bad cases from real vehicle interaction logs and built a pipeline to construct targeted training data as a complement to the existing set. Real failure queries and function-call data are mapped by an LLM onto the full catalog of 356 vehicle-control functions, then assembled into multi-turn dialogues as strictly paired positive/negative examples (correct tool call vs. hallucinated natural-language reply), with automatic pairing, dedup and system-prompt consistency checks. The resulting data covers vehicle-control hallucination, pronoun usage, and boundary rejection, and is intended to reduce these failure patterns during training.
+                </div>
+            </div>
+
+            <div class="research-item">
                 <div class="title">MoPD: Multimodal On-Device Planning — SFT Data Production</div>
                 <div class="desc">
                     Responsible for SFT training data production for the downstream MoPD on-device planning model. Built an end-to-end data construction pipeline for visual-search interaction scenarios: LLM-driven augmentation generating high-quality spoken queries, integrated TTS synthesis, and automated quality validation. Delivered 2K+ end-to-end trainable samples per batch, enabling the distilled model to expand capabilities on new interaction scenarios.
@@ -319,10 +319,10 @@
             </div>
 
             <div class="research-item">
-                <div class="title">Evaluation Infrastructure & Team RL Documentation</div>
-                <div class="meta">Supporting infrastructure across the full pipeline</div>
+                <div class="title">Multimodal &amp; OCR Evaluation Infrastructure</div>
+                <div class="meta">Perception-oriented evaluation for the embodied direction</div>
                 <div class="desc">
-                    Built reusable checkpoint-level evaluation covering IFEval, IFBench, BFCL, Tau2, SWE-Bench, LiveCodeBench, AIME 2026, and LongBench-v2. Authored team-wide RL operational guide (verl + Ray multi-node deployment, sglang serving for MoE, GRPO configuration, reward construction, OOM diagnosis).
+                    Built a reusable, automated evaluation pipeline for multimodal visual understanding, covering RefCOCO/+/g (referring-expression comprehension and visual grounding) and OCRBench (OCR capability). This supports iterating models on the perception and OCR dimensions, directly connected to the team's embodied perception &amp; OCR work. I also authored a team-wide RL operational guide (verl + Ray multi-node deployment, sglang serving for MoE, GRPO configuration).
                 </div>
             </div>
 
@@ -361,15 +361,15 @@
             </div>
 
             <div class="research-item">
-                <div class="title">Background Adversarial Attack for Object Detection</div>
+                <div class="title">Deep-RL Adversarial Attacks against Infrared Object Detection</div>
                 <div class="desc">
-                    Developed a novel background adversarial attack method enhancing adversarial sample generation for improved model robustness. Designed a targeted covert attack framework for object detection systems that outperforms existing baselines. Fabricated PCB boards for physical-domain experiments, validating digital-to-physical consistency of adversarial patches under real-world conditions. Led student research team, converting results into National Innovation Project (rated <strong>top 7%</strong>).
+                    Developed a 3D, multi-viewpoint physical adversarial attack against infrared object detectors. Formulated adversarial thermal-texture generation as a sequential decision problem and used <strong>deep reinforcement learning</strong> to plan the adversarial trajectory: an agent edits a texture matrix through directional actions, guided by a reward combining attack success, step cost, and a potential term. To keep the attack physically realizable, trajectories are smoothed with Bezier curves and passed through a thermal-diffusion simulation, then realized as graphene-based flexible thermoelectric clothing. Rendered onto 3D human meshes across viewpoints, the attack evades detection consistently, validating digital-to-physical robustness. Led the student research team, converting the results into a National Innovation Project (rated <strong>top 7%</strong>).
                 </div>
             </div>
 
             <div class="figure-container">
-                <img src="dexian.jpg" alt="Adversarial Attack Physical Experiment">
-                <div class="caption">Fig. Physical-domain adversarial patch experiment on PCB board</div>
+                <img src="dexian.jpg" alt="DRL Adversarial Trajectory Generation Architecture">
+                <div class="caption">Fig. Algorithm architecture of the DRL-based adversarial trajectory generation</div>
             </div>
         </section>
 
@@ -381,7 +381,7 @@
                 <div class="title">Mach-Mind-4-Flash Technical Report</div>
                 <div class="meta">arXiv 2607.09375 · Jul 2026 · Li Auto Foundation Model Team</div>
                 <div class="desc">
-                    Technical report for the Mach-Mind-4-Flash model, a 35B (3B-activated) MoE agentic model. Contributed to the Reasoning RL training pipeline, multi-domain reinforcement learning, and evaluation infrastructure that helped the model reach performance on par with, and on several tasks surpassing, 100B-parameter-class models through post-training alone.
+                    Technical report for the Mach-Mind-4-Flash model, a 35B (3B-activated) MoE agentic model. Contributed to the reinforcement learning for instruction-following and code generation, and to the evaluation infrastructure that helped the model reach performance on par with, and on several tasks surpassing, 100B-parameter-class models through post-training alone.
                 </div>
                 <div class="links-row">
                     <a href="https://arxiv.org/abs/2607.09375" target="_blank"><i class="fas fa-file-pdf"></i> arXiv</a>
