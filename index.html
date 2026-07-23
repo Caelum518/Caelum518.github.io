@@ -289,7 +289,14 @@
                     Identified reward hacking through trajectory-level case analysis during instruction-following RL training, where a rule-based reward was being gamed by format-level exploits. Designed an LLM-as-judge verification mechanism and automated audit pipeline to separate genuine capability gains from format-gaming. Replacing the rule-based reward with this pipeline reduced the reward-hacking rate by <strong>34.4% relative</strong>, and past the early training phase it stabilized below the base model's own hacking level, giving reliable signal for reward-shaping and early-stopping decisions.
                 </div>
             </div>
-
+            
+            <div class="research-item">
+                <div class="title">Mix-RL: Multi-Objective Reinforcement Learning for Capability Fusion</div>
+                <div class="desc">
+                    Designed and executed a multi-objective RL scheme aimed at fusing business-specific and general capabilities within a single model. Built a distributed training cluster on the verl framework and improved the reward design, using Qwen3.5-35B as the validation carrier to drive the method exploration — from training methodology and model selection, open-source component adaptation, and parallelism / hyperparameter configuration to the evaluation plan. Ran controlled experiments over multiple serial training orders and benchmarked the RL path against training-free MoE merging, quantifying capability gains and forgetting across both paths on several P0-level metrics to determine the optimal multi-capability fusion schedule.
+                </div>
+            </div>
+            
             <div class="research-item">
                 <div class="title">SWE Code Agent — Large-Scale Training Data Construction</div>
                 <div class="desc">
